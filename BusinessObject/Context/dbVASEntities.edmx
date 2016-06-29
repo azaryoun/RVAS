@@ -1,0 +1,2458 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="dbVASModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tbl_Accessgroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Desp" Type="nvarchar" MaxLength="100" />
+          <Property Name="STime" Type="datetime" />
+          <Property Name="FK_UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_AccessgroupMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_AccessGroupID" Type="int" />
+          <Property Name="FK_MenuID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_AccessgroupUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_UserID" Type="int" />
+          <Property Name="FK_AccessGroupID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="MenuTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="OrderIn" Type="int" />
+          <Property Name="FK_SiblingID" Type="int" />
+          <Property Name="FK_ParentID" Type="int" />
+          <Property Name="URL" Type="nvarchar" MaxLength="400" />
+          <Property Name="IsVisible" Type="bit" />
+          <Property Name="ClassName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="200" />
+          <Property Name="IconStyle" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsLeaf" Type="bit" />
+          <Property Name="HasExtraInfo" Type="bit" />
+          <Property Name="ExtraInfoStyle" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="150" />
+          <Property Name="Password" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDataAdmin" Type="bit" />
+          <Property Name="IsItemAdmin" Type="bit" />
+          <Property Name="FName" Type="nvarchar" MaxLength="100" />
+          <Property Name="LName" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsMale" Type="bit" />
+          <Property Name="Tel" Type="varchar" MaxLength="50" />
+          <Property Name="Mobile" Type="varchar" MaxLength="50" />
+          <Property Name="STime" Type="datetime" />
+          <Property Name="FK_UserID" Type="int" />
+          <Property Name="NationalID" Type="varchar" MaxLength="50" />
+          <Property Name="NationalNo" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="nvarchar" MaxLength="100" />
+          <Property Name="UserPhoto" Type="image" />
+          <Property Name="IsReal" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tbl_SystemSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="GatewayNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatewayCompany" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatewayUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatewayPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="GatewayIP" Type="nvarchar" MaxLength="100" />
+          <Property Name="EmailUsername" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailHost" Type="nvarchar" MaxLength="50" />
+          <Property Name="EmailPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="UpdateTime" Type="time" Precision="7" />
+          <Property Name="tryTime" Type="int" />
+          <Property Name="tryIntervalHour" Type="int" />
+          <Property Name="ETime" Type="datetime" />
+          <Property Name="FK_EUserID" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tbl_CRMCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_Date">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DateG" Type="date" />
+          <Property Name="Year" Type="int" />
+          <Property Name="Month" Type="tinyint" />
+          <Property Name="Day" Type="tinyint" />
+          <Property Name="YearP" Type="int" />
+          <Property Name="MonthP" Type="tinyint" Nullable="false" />
+          <Property Name="DayP" Type="tinyint" />
+          <Property Name="DateP" Type="char" MaxLength="10" />
+          <Property Name="WeekName" Type="varchar" MaxLength="50" />
+          <Property Name="WeekNameP" Type="nvarchar" MaxLength="50" />
+          <Property Name="MonthName" Type="varchar" MaxLength="50" />
+          <Property Name="MonthNameP" Type="nvarchar" MaxLength="50" />
+          <Property Name="WeekNo" Type="tinyint" />
+          <Property Name="Date" Type="char" MaxLength="10" />
+          <Property Name="WeekDayNo" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="WeekDayNoID" Type="int" Nullable="false" />
+          <Property Name="YearMonthP" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_Aggregators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="PardisPreNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IMIPreNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_CategoryVASService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tbl_CRM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_OwnerUserID" Type="int" />
+          <Property Name="FK_CRMCategoryID" Type="int" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="500" />
+          <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Attachment" Type="image" />
+          <Property Name="AttachmentMime" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestDate" Type="datetime" />
+          <Property Name="Status" Type="tinyint" />
+          <Property Name="ResponseDate" Type="datetime" />
+          <Property Name="ResponseRemarks" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tbl_HeadNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_AggregatorID" Type="int" />
+          <Property Name="theNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsParisType" Type="bit" />
+          <Property Name="PardisServiceTariff" Type="money" />
+        </EntityType>
+        <EntityType Name="tbl_NewsContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_OwnerUserID" Type="int" />
+          <Property Name="theText" Type="nvarchar" MaxLength="500" />
+          <Property Name="SendDate" Type="date" />
+          <Property Name="SendTime" Type="time" Precision="7" />
+          <Property Name="STime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_ReceiveLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_HeadNumberID" Type="int" />
+          <Property Name="theWholeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="theText" Type="nvarchar" MaxLength="500" />
+          <Property Name="SenderMobile" Type="nvarchar" MaxLength="50" />
+          <Property Name="STime" Type="datetime" />
+          <Property Name="FK_ReceiveDateID" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_SendLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_VASServiceID" Type="int" />
+          <Property Name="FK_VASMembershipSubscriberID" Type="int" />
+          <Property Name="SendDateTime" Type="datetime" />
+          <Property Name="theText" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ReceiverMobile" Type="nvarchar" MaxLength="500" />
+          <Property Name="ServicePrice" Type="money" />
+          <Property Name="theStatus" Type="tinyint" />
+          <Property Name="FK_SendDateID" Type="int" />
+          <Property Name="SerialOrder" Type="int" />
+        </EntityType>
+        <EntityType Name="tbl_UnsubscriptionTerm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="theTerm" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tbl_VASService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_OwnerUserID" Type="int" />
+          <Property Name="FK_AggregatorID" Type="int" />
+          <Property Name="FK_HeadNumberID" Type="int" />
+          <Property Name="FK_VASServiceCategoryID" Type="int" />
+          <Property Name="IsPardis" Type="bit" />
+          <Property Name="theWholeNumber" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="ServiceName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Remarks" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeaderText" Type="nvarchar" MaxLength="500" />
+          <Property Name="FooterText" Type="nvarchar" MaxLength="500" />
+          <Property Name="WelcomeText" Type="nvarchar" MaxLength="500" />
+          <Property Name="GoodbyeText" Type="nvarchar" MaxLength="500" />
+          <Property Name="ServicePrice" Type="money" />
+          <Property Name="IMIEnduserTariff" Type="money" />
+          <Property Name="AggergatorServiceID" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsOnDemand" Type="bit" />
+          <Property Name="FK_UserID" Type="int" />
+          <Property Name="STime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembership">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="int" Nullable="false" />
+          <Property Name="SubscriptionKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="UnsubscriptionKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsNewsContent" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembership_NewsContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_VASServiceID" Type="int" Nullable="false" />
+          <Property Name="FK_NewsContentID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembershipSerialContentFooter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_VASServiceID" Type="int" />
+          <Property Name="theOrder" Type="int" />
+          <Property Name="theText" Type="nvarchar" MaxLength="500" />
+          <Property Name="IntervalDay" Type="int" />
+          <Property Name="SendTime" Type="time" Precision="7" />
+          <Property Name="STime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembershipSerialContentHeader">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="int" Nullable="false" />
+          <Property Name="theName" Type="nvarchar" MaxLength="50" />
+          <Property Name="StratFrom" Type="date" />
+          <Property Name="EndAt" Type="date" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="STime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembershipSubscriber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_VASServiceID" Type="int" />
+          <Property Name="SubscriberMobileNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="SubscrptionDate" Type="datetime" />
+          <Property Name="UnsubscriptionDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceOnDemand">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="int" Nullable="false" />
+          <Property Name="theType" Type="tinyint" />
+          <Property Name="theKey" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsSystematic" Type="bit" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceOnDemandManualContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_VASServiceID" Type="int" />
+          <Property Name="ValidFrom" Type="datetime" />
+          <Property Name="ValidTo" Type="datetime" />
+          <Property Name="theText" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="STime" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceOnDemandSystematic">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="int" Nullable="false" />
+          <Property Name="WebServicePath" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebServiceMethod" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebMethodUsername" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebMethodPassword" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebMethodOtherParameter" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <Association Name="FK_SerialContent_Header_tbl_MembershipVASService">
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="1" />
+          <End Role="tbl_VASServiceMembershipSerialContentHeader" Type="Self.tbl_VASServiceMembershipSerialContentHeader" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembershipSerialContentHeader">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccessgroupMenu_tbl_Accessgroup">
+          <End Role="tbl_Accessgroup" Type="Self.tbl_Accessgroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_AccessgroupMenu" Type="Self.tbl_AccessgroupMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Accessgroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_AccessgroupMenu">
+              <PropertyRef Name="FK_AccessGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccessgroupUser_tbl_Accessgroup">
+          <End Role="tbl_Accessgroup" Type="Self.tbl_Accessgroup" Multiplicity="0..1" />
+          <End Role="tbl_AccessgroupUser" Type="Self.tbl_AccessgroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Accessgroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_AccessgroupUser">
+              <PropertyRef Name="FK_AccessGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccessgroupUser_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_AccessgroupUser" Type="Self.tbl_AccessgroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_AccessgroupUser">
+              <PropertyRef Name="FK_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CRM_tbl_CRMCategory">
+          <End Role="tbl_CRMCategory" Type="Self.tbl_CRMCategory" Multiplicity="0..1" />
+          <End Role="tbl_CRM" Type="Self.tbl_CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CRMCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CRM">
+              <PropertyRef Name="FK_CRMCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CRM_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_CRM" Type="Self.tbl_CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CRM">
+              <PropertyRef Name="FK_OwnerUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_HeadNumbers_tbl_Aggregators">
+          <End Role="tbl_Aggregators" Type="Self.tbl_Aggregators" Multiplicity="0..1" />
+          <End Role="tbl_HeadNumber" Type="Self.tbl_HeadNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Aggregators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_HeadNumber">
+              <PropertyRef Name="FK_AggregatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_MembershipVASService_tbl_VASServices">
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService">
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="1" />
+          <End Role="tbl_VASServiceMembership_NewsContent" Type="Self.tbl_VASServiceMembership_NewsContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembership_NewsContent">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents">
+          <End Role="tbl_NewsContent" Type="Self.tbl_NewsContent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceMembership_NewsContent" Type="Self.tbl_VASServiceMembership_NewsContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_NewsContent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembership_NewsContent">
+              <PropertyRef Name="FK_NewsContentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_NewsContents_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_NewsContent" Type="Self.tbl_NewsContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_NewsContent">
+              <PropertyRef Name="FK_OwnerUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ReceiveLog_tbl_Date">
+          <End Role="tbl_Date" Type="Self.tbl_Date" Multiplicity="0..1" />
+          <End Role="tbl_ReceiveLog" Type="Self.tbl_ReceiveLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Date">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ReceiveLog">
+              <PropertyRef Name="FK_ReceiveDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ReceiveLog_tbl_HeadNumber">
+          <End Role="tbl_HeadNumber" Type="Self.tbl_HeadNumber" Multiplicity="0..1" />
+          <End Role="tbl_ReceiveLog" Type="Self.tbl_ReceiveLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_HeadNumber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ReceiveLog">
+              <PropertyRef Name="FK_HeadNumberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SendLog_tbl_Date">
+          <End Role="tbl_Date" Type="Self.tbl_Date" Multiplicity="0..1" />
+          <End Role="tbl_SendLog" Type="Self.tbl_SendLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Date">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_SendLog">
+              <PropertyRef Name="FK_SendDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SendLog_tbl_VASService">
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="0..1" />
+          <End Role="tbl_SendLog" Type="Self.tbl_SendLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_SendLog">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber">
+          <End Role="tbl_VASServiceMembershipSubscriber" Type="Self.tbl_VASServiceMembershipSubscriber" Multiplicity="0..1" />
+          <End Role="tbl_SendLog" Type="Self.tbl_SendLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembershipSubscriber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_SendLog">
+              <PropertyRef Name="FK_VASMembershipSubscriberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader">
+          <End Role="tbl_VASServiceMembershipSerialContentHeader" Type="Self.tbl_VASServiceMembershipSerialContentHeader" Multiplicity="0..1" />
+          <End Role="tbl_VASServiceMembershipSerialContentFooter" Type="Self.tbl_VASServiceMembershipSerialContentFooter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembershipSerialContentHeader">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembershipSerialContentFooter">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership">
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="0..1" />
+          <End Role="tbl_VASServiceMembershipSubscriber" Type="Self.tbl_VASServiceMembershipSubscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembershipSubscriber">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceOnDemand_tbl_VASService">
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceOnDemand" Type="Self.tbl_VASServiceOnDemand" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceOnDemand">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand">
+          <End Role="tbl_VASServiceOnDemand" Type="Self.tbl_VASServiceOnDemand" Multiplicity="0..1" />
+          <End Role="tbl_VASServiceOnDemandManualContent" Type="Self.tbl_VASServiceOnDemandManualContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceOnDemand">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceOnDemandManualContent">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand">
+          <End Role="tbl_VASServiceOnDemand" Type="Self.tbl_VASServiceOnDemand" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceOnDemandSystematic" Type="Self.tbl_VASServiceOnDemandSystematic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceOnDemand">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceOnDemandSystematic">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_Aggregators">
+          <End Role="tbl_Aggregators" Type="Self.tbl_Aggregators" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Aggregators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_AggregatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_HeadNumbers">
+          <End Role="tbl_HeadNumber" Type="Self.tbl_HeadNumber" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_HeadNumber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_HeadNumberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_OwnerUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_VASServiceCategories">
+          <End Role="tbl_CategoryVASService" Type="Self.tbl_CategoryVASService" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CategoryVASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_VASServiceCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="spr_User_Profile_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Administration">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="IsMale" Type="bit" Mode="In" />
+          <Parameter Name="Tel" Type="varchar" Mode="In" />
+          <Parameter Name="Mobile" Type="varchar" Mode="In" />
+          <Parameter Name="STime" Type="datetime" Mode="In" />
+          <Parameter Name="FK_UserID" Type="int" Mode="In" />
+          <Parameter Name="NationalNo" Type="varchar" Mode="In" />
+          <Parameter Name="Address" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsReal" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="fnc_MiladiToShamsi_WithTime" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="char">
+          <Parameter Name="Indate" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spr_Aggregators_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_Aggregators_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="PardisPreNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="IMIPreNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_Aggregators_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="nvarchar" Mode="In" />
+          <Parameter Name="PardisPreNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="IMIPreNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_CategoryVASService_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_CategoryVASService_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_CategoryVASService_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="Title" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_HeadNumber_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_HeadNumber_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_AggregatorID" Type="int" Mode="In" />
+          <Parameter Name="theNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsParisType" Type="bit" Mode="In" />
+          <Parameter Name="PardisServiceTariff" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spr_HeadNumber_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="FK_AggregatorID" Type="int" Mode="In" />
+          <Parameter Name="theNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsParisType" Type="bit" Mode="In" />
+          <Parameter Name="PardisServiceTariff" Type="money" Mode="In" />
+        </Function>
+        <Function Name="spr_NewsContent_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_NewsContent_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_OwnerUserID" Type="int" Mode="In" />
+          <Parameter Name="theText" Type="nvarchar" Mode="In" />
+          <Parameter Name="SendDate" Type="date" Mode="In" />
+          <Parameter Name="SendTime" Type="time" Mode="In" />
+          <Parameter Name="STime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spr_NewsContent_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="theText" Type="nvarchar" Mode="In" />
+          <Parameter Name="SendDate" Type="date" Mode="In" />
+          <Parameter Name="SendTime" Type="time" Mode="In" />
+        </Function>
+        <Function Name="spr_UnsubscriptionTerm_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_UnsubscriptionTerm_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="theTerm" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_UnsubscriptionTerm_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="theTerm" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_VASService_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_VASService_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_OwnerUserID" Type="int" Mode="In" />
+          <Parameter Name="FK_AggregatorID" Type="int" Mode="In" />
+          <Parameter Name="FK_HeadNumberID" Type="int" Mode="In" />
+          <Parameter Name="FK_VASServiceCategoryID" Type="int" Mode="In" />
+          <Parameter Name="IsPardis" Type="bit" Mode="In" />
+          <Parameter Name="theWholeNumber" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="ServiceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+          <Parameter Name="HeaderText" Type="nvarchar" Mode="In" />
+          <Parameter Name="FooterText" Type="nvarchar" Mode="In" />
+          <Parameter Name="WelcomeText" Type="nvarchar" Mode="In" />
+          <Parameter Name="GoodbyeText" Type="nvarchar" Mode="In" />
+          <Parameter Name="ServicePrice" Type="money" Mode="In" />
+          <Parameter Name="IMIEnduserTariff" Type="money" Mode="In" />
+          <Parameter Name="AggergatorServiceID" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsOnDemand" Type="bit" Mode="In" />
+          <Parameter Name="FK_UserID" Type="int" Mode="In" />
+          <Parameter Name="STime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spr_VASService_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="FK_VASServiceCategoryID" Type="int" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="ServiceName" Type="nvarchar" Mode="In" />
+          <Parameter Name="Remarks" Type="nvarchar" Mode="In" />
+          <Parameter Name="HeaderText" Type="nvarchar" Mode="In" />
+          <Parameter Name="FooterText" Type="nvarchar" Mode="In" />
+          <Parameter Name="WelcomeText" Type="nvarchar" Mode="In" />
+          <Parameter Name="GoodbyeText" Type="nvarchar" Mode="In" />
+          <Parameter Name="ServicePrice" Type="money" Mode="In" />
+          <Parameter Name="IMIEnduserTariff" Type="money" Mode="In" />
+          <Parameter Name="AggergatorServiceID" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembership_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnsubscriptionKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsNewsContent" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembership_NewsContent_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_NewsContentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembership_NewsContent_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="FK_NewsContentID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembership_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="SubscriptionKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="UnsubscriptionKey" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembershipSerialContentFooter_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembershipSerialContentFooter_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="theOrder" Type="int" Mode="In" />
+          <Parameter Name="theText" Type="nvarchar" Mode="In" />
+          <Parameter Name="IntervalDay" Type="int" Mode="In" />
+          <Parameter Name="SendTime" Type="time" Mode="In" />
+          <Parameter Name="STime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembershipSerialContentFooter_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="theOrder" Type="int" Mode="In" />
+          <Parameter Name="theText" Type="nvarchar" Mode="In" />
+          <Parameter Name="IntervalDay" Type="int" Mode="In" />
+          <Parameter Name="SendTime" Type="time" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembershipSerialContentHeader_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembershipSerialContentHeader_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="theName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StratFrom" Type="date" Mode="In" />
+          <Parameter Name="EndAt" Type="date" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="STime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceMembershipSerialContentHeader_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="theName" Type="nvarchar" Mode="In" />
+          <Parameter Name="StratFrom" Type="date" Mode="In" />
+          <Parameter Name="EndAt" Type="date" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceOnDemand_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="theType" Type="tinyint" Mode="In" />
+          <Parameter Name="theKey" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsSystematic" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceOnDemand_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="theType" Type="tinyint" Mode="In" />
+          <Parameter Name="theKey" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceOnDemandManualContent_Delete" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceOnDemandManualContent_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="ValidFrom" Type="datetime" Mode="In" />
+          <Parameter Name="ValidTo" Type="datetime" Mode="In" />
+          <Parameter Name="theText" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+          <Parameter Name="STime" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="spr_VASServiceOnDemandManualContent_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="ID" Type="int" Mode="In" />
+          <Parameter Name="ValidFrom" Type="datetime" Mode="In" />
+          <Parameter Name="ValidTo" Type="datetime" Mode="In" />
+          <Parameter Name="theText" Type="nvarchar" Mode="In" />
+          <Parameter Name="IsActive" Type="bit" Mode="In" />
+        </Function>
+        <Function Name="tbl_VASServiceOnDemandSystematic_Insert" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="WebServicePath" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebServiceMethod" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebMethodUsername" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebMethodPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebMethodOtherParameter" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="tbl_VASServiceOnDemandSystematic_Update" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="VAS">
+          <Parameter Name="FK_VASServiceID" Type="int" Mode="In" />
+          <Parameter Name="WebServicePath" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebServiceMethod" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebMethodUsername" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebMethodPassword" Type="nvarchar" Mode="In" />
+          <Parameter Name="WebMethodOtherParameter" Type="nvarchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="dbVASModelStoreContainer">
+          <EntitySet Name="tbl_Accessgroup" EntityType="Self.tbl_Accessgroup" Schema="Administration" store:Type="Tables" />
+          <EntitySet Name="tbl_AccessgroupMenu" EntityType="Self.tbl_AccessgroupMenu" Schema="Administration" store:Type="Tables" />
+          <EntitySet Name="tbl_AccessgroupUser" EntityType="Self.tbl_AccessgroupUser" Schema="Administration" store:Type="Tables" />
+          <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" Schema="Administration" store:Type="Tables" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" Schema="Administration" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tbl_CRMCategory" EntityType="Self.tbl_CRMCategory" Schema="Lookup" store:Type="Tables" />
+          <EntitySet Name="tbl_Date" EntityType="Self.tbl_Date" Schema="Lookup" store:Type="Tables" />
+          <EntitySet Name="tbl_Aggregators" EntityType="Self.tbl_Aggregators" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_CategoryVASService" EntityType="Self.tbl_CategoryVASService" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_CRM" EntityType="Self.tbl_CRM" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_HeadNumber" EntityType="Self.tbl_HeadNumber" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_NewsContent" EntityType="Self.tbl_NewsContent" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_ReceiveLog" EntityType="Self.tbl_ReceiveLog" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_SendLog" EntityType="Self.tbl_SendLog" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_UnsubscriptionTerm" EntityType="Self.tbl_UnsubscriptionTerm" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASService" EntityType="Self.tbl_VASService" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceMembership" EntityType="Self.tbl_VASServiceMembership" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceMembership_NewsContent" EntityType="Self.tbl_VASServiceMembership_NewsContent" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceMembershipSerialContentFooter" EntityType="Self.tbl_VASServiceMembershipSerialContentFooter" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceMembershipSerialContentHeader" EntityType="Self.tbl_VASServiceMembershipSerialContentHeader" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceMembershipSubscriber" EntityType="Self.tbl_VASServiceMembershipSubscriber" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceOnDemand" EntityType="Self.tbl_VASServiceOnDemand" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceOnDemandManualContent" EntityType="Self.tbl_VASServiceOnDemandManualContent" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_VASServiceOnDemandSystematic" EntityType="Self.tbl_VASServiceOnDemandSystematic" Schema="VAS" store:Type="Tables" />
+          <EntitySet Name="tbl_SystemSetting" EntityType="Self.tbl_SystemSetting" store:Type="Tables" store:Schema="BasicInfo">
+            <DefiningQuery>SELECT 
+    [tbl_SystemSetting].[ID] AS [ID], 
+    [tbl_SystemSetting].[GatewayNumber] AS [GatewayNumber], 
+    [tbl_SystemSetting].[GatewayCompany] AS [GatewayCompany], 
+    [tbl_SystemSetting].[GatewayUsername] AS [GatewayUsername], 
+    [tbl_SystemSetting].[GatewayPassword] AS [GatewayPassword], 
+    [tbl_SystemSetting].[GatewayIP] AS [GatewayIP], 
+    [tbl_SystemSetting].[EmailUsername] AS [EmailUsername], 
+    [tbl_SystemSetting].[EmailHost] AS [EmailHost], 
+    [tbl_SystemSetting].[EmailPassword] AS [EmailPassword], 
+    [tbl_SystemSetting].[Email] AS [Email], 
+    [tbl_SystemSetting].[TelephoneNumber] AS [TelephoneNumber], 
+    [tbl_SystemSetting].[UpdateTime] AS [UpdateTime], 
+    [tbl_SystemSetting].[tryTime] AS [tryTime], 
+    [tbl_SystemSetting].[tryIntervalHour] AS [tryIntervalHour], 
+    [tbl_SystemSetting].[ETime] AS [ETime], 
+    [tbl_SystemSetting].[FK_EUserID] AS [FK_EUserID]
+    FROM [BasicInfo].[tbl_SystemSetting] AS [tbl_SystemSetting]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_SerialContent_Header_tbl_MembershipVASService" Association="Self.FK_SerialContent_Header_tbl_MembershipVASService">
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+            <End Role="tbl_VASServiceMembershipSerialContentHeader" EntitySet="tbl_VASServiceMembershipSerialContentHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccessgroupMenu_tbl_Accessgroup" Association="Self.FK_tbl_AccessgroupMenu_tbl_Accessgroup">
+            <End Role="tbl_Accessgroup" EntitySet="tbl_Accessgroup" />
+            <End Role="tbl_AccessgroupMenu" EntitySet="tbl_AccessgroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccessgroupUser_tbl_Accessgroup" Association="Self.FK_tbl_AccessgroupUser_tbl_Accessgroup">
+            <End Role="tbl_Accessgroup" EntitySet="tbl_Accessgroup" />
+            <End Role="tbl_AccessgroupUser" EntitySet="tbl_AccessgroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccessgroupUser_tbl_User" Association="Self.FK_tbl_AccessgroupUser_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_AccessgroupUser" EntitySet="tbl_AccessgroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CRM_tbl_CRMCategory" Association="Self.FK_tbl_CRM_tbl_CRMCategory">
+            <End Role="tbl_CRMCategory" EntitySet="tbl_CRMCategory" />
+            <End Role="tbl_CRM" EntitySet="tbl_CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CRM_tbl_User" Association="Self.FK_tbl_CRM_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_CRM" EntitySet="tbl_CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_HeadNumbers_tbl_Aggregators" Association="Self.FK_tbl_HeadNumbers_tbl_Aggregators">
+            <End Role="tbl_Aggregators" EntitySet="tbl_Aggregators" />
+            <End Role="tbl_HeadNumber" EntitySet="tbl_HeadNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_MembershipVASService_tbl_VASServices" Association="Self.FK_tbl_MembershipVASService_tbl_VASServices">
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService" Association="Self.FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService">
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+            <End Role="tbl_VASServiceMembership_NewsContent" EntitySet="tbl_VASServiceMembership_NewsContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents" Association="Self.FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents">
+            <End Role="tbl_NewsContent" EntitySet="tbl_NewsContent" />
+            <End Role="tbl_VASServiceMembership_NewsContent" EntitySet="tbl_VASServiceMembership_NewsContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_NewsContents_tbl_User" Association="Self.FK_tbl_NewsContents_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_NewsContent" EntitySet="tbl_NewsContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ReceiveLog_tbl_Date" Association="Self.FK_tbl_ReceiveLog_tbl_Date">
+            <End Role="tbl_Date" EntitySet="tbl_Date" />
+            <End Role="tbl_ReceiveLog" EntitySet="tbl_ReceiveLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ReceiveLog_tbl_HeadNumber" Association="Self.FK_tbl_ReceiveLog_tbl_HeadNumber">
+            <End Role="tbl_HeadNumber" EntitySet="tbl_HeadNumber" />
+            <End Role="tbl_ReceiveLog" EntitySet="tbl_ReceiveLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SendLog_tbl_Date" Association="Self.FK_tbl_SendLog_tbl_Date">
+            <End Role="tbl_Date" EntitySet="tbl_Date" />
+            <End Role="tbl_SendLog" EntitySet="tbl_SendLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SendLog_tbl_VASService" Association="Self.FK_tbl_SendLog_tbl_VASService">
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+            <End Role="tbl_SendLog" EntitySet="tbl_SendLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber" Association="Self.FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber">
+            <End Role="tbl_VASServiceMembershipSubscriber" EntitySet="tbl_VASServiceMembershipSubscriber" />
+            <End Role="tbl_SendLog" EntitySet="tbl_SendLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader" Association="Self.FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader">
+            <End Role="tbl_VASServiceMembershipSerialContentHeader" EntitySet="tbl_VASServiceMembershipSerialContentHeader" />
+            <End Role="tbl_VASServiceMembershipSerialContentFooter" EntitySet="tbl_VASServiceMembershipSerialContentFooter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership" Association="Self.FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership">
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+            <End Role="tbl_VASServiceMembershipSubscriber" EntitySet="tbl_VASServiceMembershipSubscriber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceOnDemand_tbl_VASService" Association="Self.FK_tbl_VASServiceOnDemand_tbl_VASService">
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+            <End Role="tbl_VASServiceOnDemand" EntitySet="tbl_VASServiceOnDemand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand" Association="Self.FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand">
+            <End Role="tbl_VASServiceOnDemand" EntitySet="tbl_VASServiceOnDemand" />
+            <End Role="tbl_VASServiceOnDemandManualContent" EntitySet="tbl_VASServiceOnDemandManualContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand" Association="Self.FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand">
+            <End Role="tbl_VASServiceOnDemand" EntitySet="tbl_VASServiceOnDemand" />
+            <End Role="tbl_VASServiceOnDemandSystematic" EntitySet="tbl_VASServiceOnDemandSystematic" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_Aggregators" Association="Self.FK_tbl_VASServices_tbl_Aggregators">
+            <End Role="tbl_Aggregators" EntitySet="tbl_Aggregators" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_HeadNumbers" Association="Self.FK_tbl_VASServices_tbl_HeadNumbers">
+            <End Role="tbl_HeadNumber" EntitySet="tbl_HeadNumber" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_User" Association="Self.FK_tbl_VASServices_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_VASServiceCategories" Association="Self.FK_tbl_VASServices_tbl_VASServiceCategories">
+            <End Role="tbl_CategoryVASService" EntitySet="tbl_CategoryVASService" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="dbVASModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tbl_Accessgroup">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Desp" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <Property Name="FK_UserID" Type="Int32" />
+          <NavigationProperty Name="tbl_AccessgroupMenu" Relationship="Self.FK_tbl_AccessgroupMenu_tbl_Accessgroup" FromRole="tbl_Accessgroup" ToRole="tbl_AccessgroupMenu" />
+          <NavigationProperty Name="tbl_AccessgroupUser" Relationship="Self.FK_tbl_AccessgroupUser_tbl_Accessgroup" FromRole="tbl_Accessgroup" ToRole="tbl_AccessgroupUser" />
+        </EntityType>
+        <EntityType Name="tbl_AccessgroupMenu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_AccessGroupID" Type="Int32" />
+          <Property Name="FK_MenuID" Type="Int32" />
+          <NavigationProperty Name="tbl_Accessgroup" Relationship="Self.FK_tbl_AccessgroupMenu_tbl_Accessgroup" FromRole="tbl_AccessgroupMenu" ToRole="tbl_Accessgroup" />
+        </EntityType>
+        <EntityType Name="tbl_AccessgroupUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_UserID" Type="Int32" />
+          <Property Name="FK_AccessGroupID" Type="Int32" />
+          <NavigationProperty Name="tbl_Accessgroup" Relationship="Self.FK_tbl_AccessgroupUser_tbl_Accessgroup" FromRole="tbl_AccessgroupUser" ToRole="tbl_Accessgroup" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_AccessgroupUser_tbl_User" FromRole="tbl_AccessgroupUser" ToRole="tbl_User" />
+        </EntityType>
+        <EntityType Name="tbl_Menu">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="MenuTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="OrderIn" Type="Int32" />
+          <Property Name="FK_SiblingID" Type="Int32" />
+          <Property Name="FK_ParentID" Type="Int32" />
+          <Property Name="URL" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="IsVisible" Type="Boolean" />
+          <Property Name="ClassName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageTitle" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="IconStyle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsLeaf" Type="Boolean" />
+          <Property Name="HasExtraInfo" Type="Boolean" />
+          <Property Name="ExtraInfoStyle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_User">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDataAdmin" Type="Boolean" />
+          <Property Name="IsItemAdmin" Type="Boolean" />
+          <Property Name="FName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="LName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsMale" Type="Boolean" />
+          <Property Name="Tel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Mobile" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <Property Name="FK_UserID" Type="Int32" />
+          <Property Name="NationalID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NationalNo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="UserPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsReal" Type="Boolean" />
+          <NavigationProperty Name="tbl_AccessgroupUser" Relationship="Self.FK_tbl_AccessgroupUser_tbl_User" FromRole="tbl_User" ToRole="tbl_AccessgroupUser" />
+          <NavigationProperty Name="tbl_NewsContent" Relationship="Self.FK_tbl_NewsContents_tbl_User" FromRole="tbl_User" ToRole="tbl_NewsContent" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_VASServices_tbl_User" FromRole="tbl_User" ToRole="tbl_VASService" />
+          <NavigationProperty Name="tbl_CRM" Relationship="dbVASModel.FK_tbl_CRM_tbl_User" FromRole="tbl_User" ToRole="tbl_CRM" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tbl_Date">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="DateG" Type="DateTime" Precision="0" />
+          <Property Name="Year" Type="Int32" />
+          <Property Name="Month" Type="Byte" />
+          <Property Name="Day" Type="Byte" />
+          <Property Name="YearP" Type="Int32" />
+          <Property Name="MonthP" Type="Byte" Nullable="false" />
+          <Property Name="DayP" Type="Byte" />
+          <Property Name="DateP" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="WeekName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="WeekNameP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MonthName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MonthNameP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WeekNo" Type="Byte" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="WeekDayNo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="WeekDayNoID" Type="Int32" Nullable="false" />
+          <Property Name="YearMonthP" Type="Int32" />
+          <NavigationProperty Name="tbl_ReceiveLog" Relationship="Self.FK_tbl_ReceiveLog_tbl_Date" FromRole="tbl_Date" ToRole="tbl_ReceiveLog" />
+          <NavigationProperty Name="tbl_SendLog" Relationship="Self.FK_tbl_SendLog_tbl_Date" FromRole="tbl_Date" ToRole="tbl_SendLog" />
+        </EntityType>
+        <EntityType Name="tbl_Aggregators">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PardisPreNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IMIPreNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_HeadNumber" Relationship="Self.FK_tbl_HeadNumbers_tbl_Aggregators" FromRole="tbl_Aggregators" ToRole="tbl_HeadNumber" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_VASServices_tbl_Aggregators" FromRole="tbl_Aggregators" ToRole="tbl_VASService" />
+        </EntityType>
+        <EntityType Name="tbl_CategoryVASService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_VASServices_tbl_VASServiceCategories" FromRole="tbl_CategoryVASService" ToRole="tbl_VASService" />
+        </EntityType>
+        <EntityType Name="tbl_HeadNumber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_AggregatorID" Type="Int32" />
+          <Property Name="theNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsParisType" Type="Boolean" />
+          <Property Name="PardisServiceTariff" Type="Decimal" Precision="19" Scale="4" />
+          <NavigationProperty Name="tbl_Aggregators" Relationship="Self.FK_tbl_HeadNumbers_tbl_Aggregators" FromRole="tbl_HeadNumber" ToRole="tbl_Aggregators" />
+          <NavigationProperty Name="tbl_ReceiveLog" Relationship="Self.FK_tbl_ReceiveLog_tbl_HeadNumber" FromRole="tbl_HeadNumber" ToRole="tbl_ReceiveLog" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_VASServices_tbl_HeadNumbers" FromRole="tbl_HeadNumber" ToRole="tbl_VASService" />
+        </EntityType>
+        <EntityType Name="tbl_NewsContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_OwnerUserID" Type="Int32" />
+          <Property Name="theText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SendDate" Type="DateTime" Precision="0" />
+          <Property Name="SendTime" Type="Time" Precision="7" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_NewsContents_tbl_User" FromRole="tbl_NewsContent" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_VASServiceMembership_NewsContent" Relationship="Self.FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents" FromRole="tbl_NewsContent" ToRole="tbl_VASServiceMembership_NewsContent" />
+        </EntityType>
+        <EntityType Name="tbl_ReceiveLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_HeadNumberID" Type="Int32" />
+          <Property Name="theText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SenderMobile" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <Property Name="FK_ReceiveDateID" Type="Int32" />
+          <NavigationProperty Name="tbl_Date" Relationship="Self.FK_tbl_ReceiveLog_tbl_Date" FromRole="tbl_ReceiveLog" ToRole="tbl_Date" />
+          <NavigationProperty Name="tbl_HeadNumber" Relationship="Self.FK_tbl_ReceiveLog_tbl_HeadNumber" FromRole="tbl_ReceiveLog" ToRole="tbl_HeadNumber" />
+          <Property Name="theWholeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_SendLog">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_VASServiceID" Type="Int32" />
+          <Property Name="FK_VASMembershipSubscriberID" Type="Int32" />
+          <Property Name="SendDateTime" Type="DateTime" Precision="3" />
+          <Property Name="theText" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverMobile" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ServicePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="theStatus" Type="Byte" />
+          <Property Name="FK_SendDateID" Type="Int32" />
+          <Property Name="SerialOrder" Type="Int32" />
+          <NavigationProperty Name="tbl_Date" Relationship="Self.FK_tbl_SendLog_tbl_Date" FromRole="tbl_SendLog" ToRole="tbl_Date" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_SendLog_tbl_VASService" FromRole="tbl_SendLog" ToRole="tbl_VASService" />
+          <NavigationProperty Name="tbl_VASServiceMembershipSubscriber" Relationship="Self.FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber" FromRole="tbl_SendLog" ToRole="tbl_VASServiceMembershipSubscriber" />
+        </EntityType>
+        <EntityType Name="tbl_UnsubscriptionTerm">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="theTerm" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tbl_VASService">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_OwnerUserID" Type="Int32" />
+          <Property Name="FK_AggregatorID" Type="Int32" />
+          <Property Name="FK_HeadNumberID" Type="Int32" />
+          <Property Name="FK_VASServiceCategoryID" Type="Int32" />
+          <Property Name="IsPardis" Type="Boolean" />
+          <Property Name="theWholeNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="ServiceName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Remarks" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeaderText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="FooterText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WelcomeText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="GoodbyeText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ServicePrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="IMIEnduserTariff" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="AggergatorServiceID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsOnDemand" Type="Boolean" />
+          <Property Name="FK_UserID" Type="Int32" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_User" Relationship="Self.FK_tbl_VASServices_tbl_User" FromRole="tbl_VASService" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_Aggregators" Relationship="Self.FK_tbl_VASServices_tbl_Aggregators" FromRole="tbl_VASService" ToRole="tbl_Aggregators" />
+          <NavigationProperty Name="tbl_CategoryVASService" Relationship="Self.FK_tbl_VASServices_tbl_VASServiceCategories" FromRole="tbl_VASService" ToRole="tbl_CategoryVASService" />
+          <NavigationProperty Name="tbl_HeadNumber" Relationship="Self.FK_tbl_VASServices_tbl_HeadNumbers" FromRole="tbl_VASService" ToRole="tbl_HeadNumber" />
+          <NavigationProperty Name="tbl_SendLog" Relationship="Self.FK_tbl_SendLog_tbl_VASService" FromRole="tbl_VASService" ToRole="tbl_SendLog" />
+          <NavigationProperty Name="tbl_VASServiceMembership" Relationship="Self.FK_tbl_MembershipVASService_tbl_VASServices" FromRole="tbl_VASService" ToRole="tbl_VASServiceMembership" />
+          <NavigationProperty Name="tbl_VASServiceOnDemand" Relationship="Self.FK_tbl_VASServiceOnDemand_tbl_VASService" FromRole="tbl_VASService" ToRole="tbl_VASServiceOnDemand" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembership">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="Int32" Nullable="false" />
+          <Property Name="SubscriptionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UnsubscriptionKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsNewsContent" Type="Boolean" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_MembershipVASService_tbl_VASServices" FromRole="tbl_VASServiceMembership" ToRole="tbl_VASService" />
+          <NavigationProperty Name="tbl_VASServiceMembershipSerialContentHeader" Relationship="Self.FK_SerialContent_Header_tbl_MembershipVASService" FromRole="tbl_VASServiceMembership" ToRole="tbl_VASServiceMembershipSerialContentHeader" />
+          <NavigationProperty Name="tbl_VASServiceMembership_NewsContent" Relationship="Self.FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService" FromRole="tbl_VASServiceMembership" ToRole="tbl_VASServiceMembership_NewsContent" />
+          <NavigationProperty Name="tbl_VASServiceMembershipSubscriber" Relationship="Self.FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership" FromRole="tbl_VASServiceMembership" ToRole="tbl_VASServiceMembershipSubscriber" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembership_NewsContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_VASServiceID" Type="Int32" Nullable="false" />
+          <Property Name="FK_NewsContentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_NewsContent" Relationship="Self.FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents" FromRole="tbl_VASServiceMembership_NewsContent" ToRole="tbl_NewsContent" />
+          <NavigationProperty Name="tbl_VASServiceMembership" Relationship="Self.FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService" FromRole="tbl_VASServiceMembership_NewsContent" ToRole="tbl_VASServiceMembership" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembershipSerialContentFooter">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_VASServiceID" Type="Int32" />
+          <Property Name="theOrder" Type="Int32" />
+          <Property Name="theText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IntervalDay" Type="Int32" />
+          <Property Name="SendTime" Type="Time" Precision="7" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_VASServiceMembershipSerialContentHeader" Relationship="Self.FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader" FromRole="tbl_VASServiceMembershipSerialContentFooter" ToRole="tbl_VASServiceMembershipSerialContentHeader" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembershipSerialContentHeader">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="Int32" Nullable="false" />
+          <Property Name="theName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StratFrom" Type="DateTime" Precision="0" />
+          <Property Name="EndAt" Type="DateTime" Precision="0" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_VASServiceMembership" Relationship="Self.FK_SerialContent_Header_tbl_MembershipVASService" FromRole="tbl_VASServiceMembershipSerialContentHeader" ToRole="tbl_VASServiceMembership" />
+          <NavigationProperty Name="tbl_VASServiceMembershipSerialContentFooter" Relationship="Self.FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader" FromRole="tbl_VASServiceMembershipSerialContentHeader" ToRole="tbl_VASServiceMembershipSerialContentFooter" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceMembershipSubscriber">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_VASServiceID" Type="Int32" />
+          <Property Name="SubscriberMobileNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SubscrptionDate" Type="DateTime" Precision="3" />
+          <Property Name="UnsubscriptionDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_SendLog" Relationship="Self.FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber" FromRole="tbl_VASServiceMembershipSubscriber" ToRole="tbl_SendLog" />
+          <NavigationProperty Name="tbl_VASServiceMembership" Relationship="Self.FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership" FromRole="tbl_VASServiceMembershipSubscriber" ToRole="tbl_VASServiceMembership" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceOnDemand">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="Int32" Nullable="false" />
+          <Property Name="theType" Type="Byte" />
+          <Property Name="theKey" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsSystematic" Type="Boolean" />
+          <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_VASServiceOnDemand_tbl_VASService" FromRole="tbl_VASServiceOnDemand" ToRole="tbl_VASService" />
+          <NavigationProperty Name="tbl_VASServiceOnDemandManualContent" Relationship="Self.FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand" FromRole="tbl_VASServiceOnDemand" ToRole="tbl_VASServiceOnDemandManualContent" />
+          <NavigationProperty Name="tbl_VASServiceOnDemandSystematic" Relationship="Self.FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand" FromRole="tbl_VASServiceOnDemand" ToRole="tbl_VASServiceOnDemandSystematic" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceOnDemandManualContent">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_VASServiceID" Type="Int32" />
+          <Property Name="ValidFrom" Type="DateTime" Precision="3" />
+          <Property Name="ValidTo" Type="DateTime" Precision="3" />
+          <Property Name="theText" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="STime" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="tbl_VASServiceOnDemand" Relationship="Self.FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand" FromRole="tbl_VASServiceOnDemandManualContent" ToRole="tbl_VASServiceOnDemand" />
+        </EntityType>
+        <EntityType Name="tbl_VASServiceOnDemandSystematic">
+          <Key>
+            <PropertyRef Name="FK_VASServiceID" />
+          </Key>
+          <Property Name="FK_VASServiceID" Type="Int32" Nullable="false" />
+          <Property Name="WebServicePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebServiceMethod" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebMethodUsername" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebMethodPassword" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebMethodOtherParameter" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_VASServiceOnDemand" Relationship="Self.FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand" FromRole="tbl_VASServiceOnDemandSystematic" ToRole="tbl_VASServiceOnDemand" />
+        </EntityType>
+        <EntityType Name="tbl_SystemSetting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="GatewayNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatewayCompany" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatewayUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatewayPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GatewayIP" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="EmailUsername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailHost" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UpdateTime" Type="Time" Precision="7" />
+          <Property Name="tryTime" Type="Int32" />
+          <Property Name="tryIntervalHour" Type="Int32" />
+          <Property Name="ETime" Type="DateTime" Precision="3" />
+          <Property Name="FK_EUserID" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_tbl_AccessgroupMenu_tbl_Accessgroup">
+          <End Role="tbl_Accessgroup" Type="Self.tbl_Accessgroup" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_AccessgroupMenu" Type="Self.tbl_AccessgroupMenu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Accessgroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_AccessgroupMenu">
+              <PropertyRef Name="FK_AccessGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccessgroupUser_tbl_Accessgroup">
+          <End Role="tbl_Accessgroup" Type="Self.tbl_Accessgroup" Multiplicity="0..1" />
+          <End Role="tbl_AccessgroupUser" Type="Self.tbl_AccessgroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Accessgroup">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_AccessgroupUser">
+              <PropertyRef Name="FK_AccessGroupID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_AccessgroupUser_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_AccessgroupUser" Type="Self.tbl_AccessgroupUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_AccessgroupUser">
+              <PropertyRef Name="FK_UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_NewsContents_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_NewsContent" Type="Self.tbl_NewsContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_NewsContent">
+              <PropertyRef Name="FK_OwnerUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_User">
+          <End Role="tbl_User" Type="Self.tbl_User" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_OwnerUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ReceiveLog_tbl_Date">
+          <End Role="tbl_Date" Type="Self.tbl_Date" Multiplicity="0..1" />
+          <End Role="tbl_ReceiveLog" Type="Self.tbl_ReceiveLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Date">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ReceiveLog">
+              <PropertyRef Name="FK_ReceiveDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SendLog_tbl_Date">
+          <End Role="tbl_Date" Type="Self.tbl_Date" Multiplicity="0..1" />
+          <End Role="tbl_SendLog" Type="Self.tbl_SendLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Date">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_SendLog">
+              <PropertyRef Name="FK_SendDateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_HeadNumbers_tbl_Aggregators">
+          <End Role="tbl_Aggregators" Type="Self.tbl_Aggregators" Multiplicity="0..1" />
+          <End Role="tbl_HeadNumber" Type="Self.tbl_HeadNumber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Aggregators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_HeadNumber">
+              <PropertyRef Name="FK_AggregatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_Aggregators">
+          <End Role="tbl_Aggregators" Type="Self.tbl_Aggregators" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_Aggregators">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_AggregatorID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_VASServiceCategories">
+          <End Role="tbl_CategoryVASService" Type="Self.tbl_CategoryVASService" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CategoryVASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_VASServiceCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_ReceiveLog_tbl_HeadNumber">
+          <End Role="tbl_HeadNumber" Type="Self.tbl_HeadNumber" Multiplicity="0..1" />
+          <End Role="tbl_ReceiveLog" Type="Self.tbl_ReceiveLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_HeadNumber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_ReceiveLog">
+              <PropertyRef Name="FK_HeadNumberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServices_tbl_HeadNumbers">
+          <End Role="tbl_HeadNumber" Type="Self.tbl_HeadNumber" Multiplicity="0..1" />
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_HeadNumber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASService">
+              <PropertyRef Name="FK_HeadNumberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents">
+          <End Role="tbl_NewsContent" Type="Self.tbl_NewsContent" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceMembership_NewsContent" Type="Self.tbl_VASServiceMembership_NewsContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_NewsContent">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembership_NewsContent">
+              <PropertyRef Name="FK_NewsContentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SendLog_tbl_VASService">
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="0..1" />
+          <End Role="tbl_SendLog" Type="Self.tbl_SendLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_SendLog">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber">
+          <End Role="tbl_VASServiceMembershipSubscriber" Type="Self.tbl_VASServiceMembershipSubscriber" Multiplicity="0..1" />
+          <End Role="tbl_SendLog" Type="Self.tbl_SendLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembershipSubscriber">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_SendLog">
+              <PropertyRef Name="FK_VASMembershipSubscriberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_MembershipVASService_tbl_VASServices">
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceOnDemand_tbl_VASService">
+          <End Role="tbl_VASService" Type="Self.tbl_VASService" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceOnDemand" Type="Self.tbl_VASServiceOnDemand" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASService">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceOnDemand">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SerialContent_Header_tbl_MembershipVASService">
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="1" />
+          <End Role="tbl_VASServiceMembershipSerialContentHeader" Type="Self.tbl_VASServiceMembershipSerialContentHeader" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembershipSerialContentHeader">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService">
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="1" />
+          <End Role="tbl_VASServiceMembership_NewsContent" Type="Self.tbl_VASServiceMembership_NewsContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembership_NewsContent">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership">
+          <End Role="tbl_VASServiceMembership" Type="Self.tbl_VASServiceMembership" Multiplicity="0..1" />
+          <End Role="tbl_VASServiceMembershipSubscriber" Type="Self.tbl_VASServiceMembershipSubscriber" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembership">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembershipSubscriber">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader">
+          <End Role="tbl_VASServiceMembershipSerialContentHeader" Type="Self.tbl_VASServiceMembershipSerialContentHeader" Multiplicity="0..1" />
+          <End Role="tbl_VASServiceMembershipSerialContentFooter" Type="Self.tbl_VASServiceMembershipSerialContentFooter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceMembershipSerialContentHeader">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceMembershipSerialContentFooter">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand">
+          <End Role="tbl_VASServiceOnDemand" Type="Self.tbl_VASServiceOnDemand" Multiplicity="0..1" />
+          <End Role="tbl_VASServiceOnDemandManualContent" Type="Self.tbl_VASServiceOnDemandManualContent" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceOnDemand">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceOnDemandManualContent">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand">
+          <End Role="tbl_VASServiceOnDemand" Type="Self.tbl_VASServiceOnDemand" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="tbl_VASServiceOnDemandSystematic" Type="Self.tbl_VASServiceOnDemandSystematic" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_VASServiceOnDemand">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Principal>
+            <Dependent Role="tbl_VASServiceOnDemandSystematic">
+              <PropertyRef Name="FK_VASServiceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="dbVASEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tbl_Accessgroup" EntityType="Self.tbl_Accessgroup" />
+          <EntitySet Name="tbl_AccessgroupMenu" EntityType="Self.tbl_AccessgroupMenu" />
+          <EntitySet Name="tbl_AccessgroupUser" EntityType="Self.tbl_AccessgroupUser" />
+          <EntitySet Name="tbl_Menu" EntityType="Self.tbl_Menu" />
+          <EntitySet Name="tbl_User" EntityType="Self.tbl_User" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tbl_Date" EntityType="Self.tbl_Date" />
+          <EntitySet Name="tbl_Aggregators" EntityType="Self.tbl_Aggregators" />
+          <EntitySet Name="tbl_CategoryVASService" EntityType="Self.tbl_CategoryVASService" />
+          <EntitySet Name="tbl_HeadNumber" EntityType="Self.tbl_HeadNumber" />
+          <EntitySet Name="tbl_NewsContent" EntityType="Self.tbl_NewsContent" />
+          <EntitySet Name="tbl_ReceiveLog" EntityType="Self.tbl_ReceiveLog" />
+          <EntitySet Name="tbl_SendLog" EntityType="Self.tbl_SendLog" />
+          <EntitySet Name="tbl_UnsubscriptionTerm" EntityType="Self.tbl_UnsubscriptionTerm" />
+          <EntitySet Name="tbl_VASService" EntityType="Self.tbl_VASService" />
+          <EntitySet Name="tbl_VASServiceMembership" EntityType="Self.tbl_VASServiceMembership" />
+          <EntitySet Name="tbl_VASServiceMembership_NewsContent" EntityType="Self.tbl_VASServiceMembership_NewsContent" />
+          <EntitySet Name="tbl_VASServiceMembershipSerialContentFooter" EntityType="Self.tbl_VASServiceMembershipSerialContentFooter" />
+          <EntitySet Name="tbl_VASServiceMembershipSerialContentHeader" EntityType="Self.tbl_VASServiceMembershipSerialContentHeader" />
+          <EntitySet Name="tbl_VASServiceMembershipSubscriber" EntityType="Self.tbl_VASServiceMembershipSubscriber" />
+          <EntitySet Name="tbl_VASServiceOnDemand" EntityType="Self.tbl_VASServiceOnDemand" />
+          <EntitySet Name="tbl_VASServiceOnDemandManualContent" EntityType="Self.tbl_VASServiceOnDemandManualContent" />
+          <EntitySet Name="tbl_VASServiceOnDemandSystematic" EntityType="Self.tbl_VASServiceOnDemandSystematic" />
+          <EntitySet Name="tbl_SystemSetting" EntityType="Self.tbl_SystemSetting" />
+          <AssociationSet Name="FK_tbl_AccessgroupMenu_tbl_Accessgroup" Association="Self.FK_tbl_AccessgroupMenu_tbl_Accessgroup">
+            <End Role="tbl_Accessgroup" EntitySet="tbl_Accessgroup" />
+            <End Role="tbl_AccessgroupMenu" EntitySet="tbl_AccessgroupMenu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccessgroupUser_tbl_Accessgroup" Association="Self.FK_tbl_AccessgroupUser_tbl_Accessgroup">
+            <End Role="tbl_Accessgroup" EntitySet="tbl_Accessgroup" />
+            <End Role="tbl_AccessgroupUser" EntitySet="tbl_AccessgroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_AccessgroupUser_tbl_User" Association="Self.FK_tbl_AccessgroupUser_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_AccessgroupUser" EntitySet="tbl_AccessgroupUser" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_NewsContents_tbl_User" Association="Self.FK_tbl_NewsContents_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_NewsContent" EntitySet="tbl_NewsContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_User" Association="Self.FK_tbl_VASServices_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ReceiveLog_tbl_Date" Association="Self.FK_tbl_ReceiveLog_tbl_Date">
+            <End Role="tbl_Date" EntitySet="tbl_Date" />
+            <End Role="tbl_ReceiveLog" EntitySet="tbl_ReceiveLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SendLog_tbl_Date" Association="Self.FK_tbl_SendLog_tbl_Date">
+            <End Role="tbl_Date" EntitySet="tbl_Date" />
+            <End Role="tbl_SendLog" EntitySet="tbl_SendLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_HeadNumbers_tbl_Aggregators" Association="Self.FK_tbl_HeadNumbers_tbl_Aggregators">
+            <End Role="tbl_Aggregators" EntitySet="tbl_Aggregators" />
+            <End Role="tbl_HeadNumber" EntitySet="tbl_HeadNumber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_Aggregators" Association="Self.FK_tbl_VASServices_tbl_Aggregators">
+            <End Role="tbl_Aggregators" EntitySet="tbl_Aggregators" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_VASServiceCategories" Association="Self.FK_tbl_VASServices_tbl_VASServiceCategories">
+            <End Role="tbl_CategoryVASService" EntitySet="tbl_CategoryVASService" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_ReceiveLog_tbl_HeadNumber" Association="Self.FK_tbl_ReceiveLog_tbl_HeadNumber">
+            <End Role="tbl_HeadNumber" EntitySet="tbl_HeadNumber" />
+            <End Role="tbl_ReceiveLog" EntitySet="tbl_ReceiveLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServices_tbl_HeadNumbers" Association="Self.FK_tbl_VASServices_tbl_HeadNumbers">
+            <End Role="tbl_HeadNumber" EntitySet="tbl_HeadNumber" />
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents" Association="Self.FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents">
+            <End Role="tbl_NewsContent" EntitySet="tbl_NewsContent" />
+            <End Role="tbl_VASServiceMembership_NewsContent" EntitySet="tbl_VASServiceMembership_NewsContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SendLog_tbl_VASService" Association="Self.FK_tbl_SendLog_tbl_VASService">
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+            <End Role="tbl_SendLog" EntitySet="tbl_SendLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber" Association="Self.FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber">
+            <End Role="tbl_VASServiceMembershipSubscriber" EntitySet="tbl_VASServiceMembershipSubscriber" />
+            <End Role="tbl_SendLog" EntitySet="tbl_SendLog" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_MembershipVASService_tbl_VASServices" Association="Self.FK_tbl_MembershipVASService_tbl_VASServices">
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceOnDemand_tbl_VASService" Association="Self.FK_tbl_VASServiceOnDemand_tbl_VASService">
+            <End Role="tbl_VASService" EntitySet="tbl_VASService" />
+            <End Role="tbl_VASServiceOnDemand" EntitySet="tbl_VASServiceOnDemand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SerialContent_Header_tbl_MembershipVASService" Association="Self.FK_SerialContent_Header_tbl_MembershipVASService">
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+            <End Role="tbl_VASServiceMembershipSerialContentHeader" EntitySet="tbl_VASServiceMembershipSerialContentHeader" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService" Association="Self.FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService">
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+            <End Role="tbl_VASServiceMembership_NewsContent" EntitySet="tbl_VASServiceMembership_NewsContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership" Association="Self.FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership">
+            <End Role="tbl_VASServiceMembership" EntitySet="tbl_VASServiceMembership" />
+            <End Role="tbl_VASServiceMembershipSubscriber" EntitySet="tbl_VASServiceMembershipSubscriber" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader" Association="Self.FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader">
+            <End Role="tbl_VASServiceMembershipSerialContentHeader" EntitySet="tbl_VASServiceMembershipSerialContentHeader" />
+            <End Role="tbl_VASServiceMembershipSerialContentFooter" EntitySet="tbl_VASServiceMembershipSerialContentFooter" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand" Association="Self.FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand">
+            <End Role="tbl_VASServiceOnDemand" EntitySet="tbl_VASServiceOnDemand" />
+            <End Role="tbl_VASServiceOnDemandManualContent" EntitySet="tbl_VASServiceOnDemandManualContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand" Association="Self.FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand">
+            <End Role="tbl_VASServiceOnDemand" EntitySet="tbl_VASServiceOnDemand" />
+            <End Role="tbl_VASServiceOnDemandSystematic" EntitySet="tbl_VASServiceOnDemandSystematic" />
+          </AssociationSet>
+          <FunctionImport Name="spr_Aggregators_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_Aggregators_Insert">
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="PardisPreNumber" Mode="In" Type="String" />
+            <Parameter Name="IMIPreNumber" Mode="In" Type="String" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_Aggregators_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+            <Parameter Name="PardisPreNumber" Mode="In" Type="String" />
+            <Parameter Name="IMIPreNumber" Mode="In" Type="String" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_CategoryVASService_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_CategoryVASService_Insert">
+          <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_CategoryVASService_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="Title" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_HeadNumber_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_HeadNumber_Insert">
+            <Parameter Name="FK_AggregatorID" Mode="In" Type="Int32" />
+            <Parameter Name="theNumber" Mode="In" Type="String" />
+            <Parameter Name="IsParisType" Mode="In" Type="Boolean" />
+            <Parameter Name="PardisServiceTariff" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spr_HeadNumber_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="FK_AggregatorID" Mode="In" Type="Int32" />
+            <Parameter Name="theNumber" Mode="In" Type="String" />
+            <Parameter Name="IsParisType" Mode="In" Type="Boolean" />
+            <Parameter Name="PardisServiceTariff" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="spr_NewsContent_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_NewsContent_Insert" ReturnType="Collection(Decimal)">
+            <Parameter Name="FK_OwnerUserID" Mode="In" Type="Int32" />
+            <Parameter Name="theText" Mode="In" Type="String" />
+            <Parameter Name="SendDate" Mode="In" Type="DateTime" />
+            <Parameter Name="SendTime" Mode="In" Type="Time" />
+            <Parameter Name="STime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spr_NewsContent_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="theText" Mode="In" Type="String" />
+            <Parameter Name="SendDate" Mode="In" Type="DateTime" />
+            <Parameter Name="SendTime" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="spr_UnsubscriptionTerm_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_UnsubscriptionTerm_Insert">
+          <Parameter Name="theTerm" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_UnsubscriptionTerm_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="theTerm" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASService_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASService_Insert" ReturnType="Collection(Decimal)">
+            <Parameter Name="FK_OwnerUserID" Mode="In" Type="Int32" />
+            <Parameter Name="FK_AggregatorID" Mode="In" Type="Int32" />
+            <Parameter Name="FK_HeadNumberID" Mode="In" Type="Int32" />
+            <Parameter Name="FK_VASServiceCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="IsPardis" Mode="In" Type="Boolean" />
+            <Parameter Name="theWholeNumber" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="ServiceName" Mode="In" Type="String" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+            <Parameter Name="HeaderText" Mode="In" Type="String" />
+            <Parameter Name="FooterText" Mode="In" Type="String" />
+            <Parameter Name="WelcomeText" Mode="In" Type="String" />
+            <Parameter Name="GoodbyeText" Mode="In" Type="String" />
+            <Parameter Name="ServicePrice" Mode="In" Type="Decimal" />
+            <Parameter Name="IMIEnduserTariff" Mode="In" Type="Decimal" />
+            <Parameter Name="AggergatorServiceID" Mode="In" Type="String" />
+            <Parameter Name="IsOnDemand" Mode="In" Type="Boolean" />
+            <Parameter Name="FK_UserID" Mode="In" Type="Int32" />
+            <Parameter Name="STime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASService_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="FK_VASServiceCategoryID" Mode="In" Type="Int32" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="ServiceName" Mode="In" Type="String" />
+            <Parameter Name="Remarks" Mode="In" Type="String" />
+            <Parameter Name="HeaderText" Mode="In" Type="String" />
+            <Parameter Name="FooterText" Mode="In" Type="String" />
+            <Parameter Name="WelcomeText" Mode="In" Type="String" />
+            <Parameter Name="GoodbyeText" Mode="In" Type="String" />
+            <Parameter Name="ServicePrice" Mode="In" Type="Decimal" />
+            <Parameter Name="IMIEnduserTariff" Mode="In" Type="Decimal" />
+            <Parameter Name="AggergatorServiceID" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembership_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionKey" Mode="In" Type="String" />
+            <Parameter Name="UnsubscriptionKey" Mode="In" Type="String" />
+            <Parameter Name="IsNewsContent" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembership_NewsContent_Delete">
+          <Parameter Name="FK_NewsContentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembership_NewsContent_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="FK_NewsContentID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembership_Update">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="SubscriptionKey" Mode="In" Type="String" />
+            <Parameter Name="UnsubscriptionKey" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembershipSerialContentFooter_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembershipSerialContentFooter_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="theOrder" Mode="In" Type="Int32" />
+            <Parameter Name="theText" Mode="In" Type="String" />
+            <Parameter Name="IntervalDay" Mode="In" Type="Int32" />
+            <Parameter Name="SendTime" Mode="In" Type="Time" />
+            <Parameter Name="STime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembershipSerialContentFooter_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="theOrder" Mode="In" Type="Int32" />
+            <Parameter Name="theText" Mode="In" Type="String" />
+            <Parameter Name="IntervalDay" Mode="In" Type="Int32" />
+            <Parameter Name="SendTime" Mode="In" Type="Time" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembershipSerialContentHeader_Delete">
+          <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembershipSerialContentHeader_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="theName" Mode="In" Type="String" />
+            <Parameter Name="StratFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="EndAt" Mode="In" Type="DateTime" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="STime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceMembershipSerialContentHeader_Update">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="theName" Mode="In" Type="String" />
+            <Parameter Name="StratFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="EndAt" Mode="In" Type="DateTime" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceOnDemand_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="theType" Mode="In" Type="Byte" />
+            <Parameter Name="theKey" Mode="In" Type="String" />
+            <Parameter Name="IsSystematic" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceOnDemand_Update">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="theType" Mode="In" Type="Byte" />
+            <Parameter Name="theKey" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceOnDemandManualContent_Delete">
+          <Parameter Name="ID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceOnDemandManualContent_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="ValidFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="ValidTo" Mode="In" Type="DateTime" />
+            <Parameter Name="theText" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+            <Parameter Name="STime" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="spr_VASServiceOnDemandManualContent_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="ValidFrom" Mode="In" Type="DateTime" />
+            <Parameter Name="ValidTo" Mode="In" Type="DateTime" />
+            <Parameter Name="theText" Mode="In" Type="String" />
+            <Parameter Name="IsActive" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <FunctionImport Name="tbl_VASServiceOnDemandSystematic_Insert">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="WebServicePath" Mode="In" Type="String" />
+            <Parameter Name="WebServiceMethod" Mode="In" Type="String" />
+            <Parameter Name="WebMethodUsername" Mode="In" Type="String" />
+            <Parameter Name="WebMethodPassword" Mode="In" Type="String" />
+            <Parameter Name="WebMethodOtherParameter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="tbl_VASServiceOnDemandSystematic_Update">
+            <Parameter Name="FK_VASServiceID" Mode="In" Type="Int32" />
+            <Parameter Name="WebServicePath" Mode="In" Type="String" />
+            <Parameter Name="WebServiceMethod" Mode="In" Type="String" />
+            <Parameter Name="WebMethodUsername" Mode="In" Type="String" />
+            <Parameter Name="WebMethodPassword" Mode="In" Type="String" />
+            <Parameter Name="WebMethodOtherParameter" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="spr_User_Profile_Update">
+            <Parameter Name="ID" Mode="In" Type="Int32" />
+            <Parameter Name="IsMale" Mode="In" Type="Boolean" />
+            <Parameter Name="Tel" Mode="In" Type="String" />
+            <Parameter Name="Mobile" Mode="In" Type="String" />
+            <Parameter Name="STime" Mode="In" Type="DateTime" />
+            <Parameter Name="FK_UserID" Mode="In" Type="Int32" />
+            <Parameter Name="NationalNo" Mode="In" Type="String" />
+            <Parameter Name="Address" Mode="In" Type="String" />
+            <Parameter Name="IsReal" Mode="In" Type="Boolean" />
+          </FunctionImport>
+          <EntitySet Name="tbl_CRMCategory" EntityType="dbVASModel.tbl_CRMCategory" />
+          <EntitySet Name="tbl_CRM" EntityType="dbVASModel.tbl_CRM" />
+          <AssociationSet Name="FK_tbl_CRM_tbl_User" Association="dbVASModel.FK_tbl_CRM_tbl_User">
+            <End Role="tbl_User" EntitySet="tbl_User" />
+            <End Role="tbl_CRM" EntitySet="tbl_CRM" />
+          </AssociationSet>
+          <AssociationSet Name="FK_tbl_CRM_tbl_CRMCategory" Association="dbVASModel.FK_tbl_CRM_tbl_CRMCategory">
+            <End Role="tbl_CRMCategory" EntitySet="tbl_CRMCategory" />
+            <End Role="tbl_CRM" EntitySet="tbl_CRM" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="tbl_CRMCategory">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_CRM" Relationship="dbVASModel.FK_tbl_CRM_tbl_CRMCategory" FromRole="tbl_CRMCategory" ToRole="tbl_CRM" />
+        </EntityType>
+        <EntityType Name="tbl_CRM">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FK_OwnerUserID" Type="Int32" />
+          <Property Name="FK_CRMCategoryID" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="AttachmentMime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestDate" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Byte" />
+          <Property Name="ResponseDate" Type="DateTime" Precision="3" />
+          <Property Name="ResponseRemarks" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbl_User" Relationship="dbVASModel.FK_tbl_CRM_tbl_User" FromRole="tbl_CRM" ToRole="tbl_User" />
+          <NavigationProperty Name="tbl_CRMCategory" Relationship="dbVASModel.FK_tbl_CRM_tbl_CRMCategory" FromRole="tbl_CRM" ToRole="tbl_CRMCategory" />
+        </EntityType>
+        <Association Name="FK_tbl_CRM_tbl_User">
+          <End Type="dbVASModel.tbl_User" Role="tbl_User" Multiplicity="0..1" />
+          <End Type="dbVASModel.tbl_CRM" Role="tbl_CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_User">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CRM">
+              <PropertyRef Name="FK_OwnerUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbl_CRM_tbl_CRMCategory">
+          <End Type="dbVASModel.tbl_CRMCategory" Role="tbl_CRMCategory" Multiplicity="0..1" />
+          <End Type="dbVASModel.tbl_CRM" Role="tbl_CRM" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_CRMCategory">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="tbl_CRM">
+              <PropertyRef Name="FK_CRMCategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="dbVASModelStoreContainer" CdmEntityContainer="dbVASEntities">
+          <EntitySetMapping Name="tbl_Accessgroup">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_Accessgroup">
+              <MappingFragment StoreEntitySet="tbl_Accessgroup">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Desp" ColumnName="Desp" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+                <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AccessgroupMenu">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_AccessgroupMenu">
+              <MappingFragment StoreEntitySet="tbl_AccessgroupMenu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_AccessGroupID" ColumnName="FK_AccessGroupID" />
+                <ScalarProperty Name="FK_MenuID" ColumnName="FK_MenuID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_AccessgroupUser">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_AccessgroupUser">
+              <MappingFragment StoreEntitySet="tbl_AccessgroupUser">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+                <ScalarProperty Name="FK_AccessGroupID" ColumnName="FK_AccessGroupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Menu">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_Menu">
+              <MappingFragment StoreEntitySet="tbl_Menu">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="OrderIn" ColumnName="OrderIn" />
+                <ScalarProperty Name="FK_SiblingID" ColumnName="FK_SiblingID" />
+                <ScalarProperty Name="FK_ParentID" ColumnName="FK_ParentID" />
+                <ScalarProperty Name="URL" ColumnName="URL" />
+                <ScalarProperty Name="IsVisible" ColumnName="IsVisible" />
+                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="IconStyle" ColumnName="IconStyle" />
+                <ScalarProperty Name="IsLeaf" ColumnName="IsLeaf" />
+                <ScalarProperty Name="HasExtraInfo" ColumnName="HasExtraInfo" />
+                <ScalarProperty Name="ExtraInfoStyle" ColumnName="ExtraInfoStyle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_User">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_User">
+              <MappingFragment StoreEntitySet="tbl_User">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsDataAdmin" ColumnName="IsDataAdmin" />
+                <ScalarProperty Name="IsItemAdmin" ColumnName="IsItemAdmin" />
+                <ScalarProperty Name="FName" ColumnName="FName" />
+                <ScalarProperty Name="LName" ColumnName="LName" />
+                <ScalarProperty Name="IsMale" ColumnName="IsMale" />
+                <ScalarProperty Name="Tel" ColumnName="Tel" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+                <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+                <ScalarProperty Name="NationalID" ColumnName="NationalID" />
+                <ScalarProperty Name="NationalNo" ColumnName="NationalNo" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="UserPhoto" ColumnName="UserPhoto" />
+                <ScalarProperty Name="IsReal" ColumnName="IsReal" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="dbVASModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Date">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_Date">
+              <MappingFragment StoreEntitySet="tbl_Date">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateG" ColumnName="DateG" />
+                <ScalarProperty Name="Year" ColumnName="Year" />
+                <ScalarProperty Name="Month" ColumnName="Month" />
+                <ScalarProperty Name="Day" ColumnName="Day" />
+                <ScalarProperty Name="YearP" ColumnName="YearP" />
+                <ScalarProperty Name="MonthP" ColumnName="MonthP" />
+                <ScalarProperty Name="DayP" ColumnName="DayP" />
+                <ScalarProperty Name="DateP" ColumnName="DateP" />
+                <ScalarProperty Name="WeekName" ColumnName="WeekName" />
+                <ScalarProperty Name="WeekNameP" ColumnName="WeekNameP" />
+                <ScalarProperty Name="MonthName" ColumnName="MonthName" />
+                <ScalarProperty Name="MonthNameP" ColumnName="MonthNameP" />
+                <ScalarProperty Name="WeekNo" ColumnName="WeekNo" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="WeekDayNo" ColumnName="WeekDayNo" />
+                <ScalarProperty Name="WeekDayNoID" ColumnName="WeekDayNoID" />
+                <ScalarProperty Name="YearMonthP" ColumnName="YearMonthP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_Aggregators">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_Aggregators">
+              <MappingFragment StoreEntitySet="tbl_Aggregators">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PardisPreNumber" ColumnName="PardisPreNumber" />
+                <ScalarProperty Name="IMIPreNumber" ColumnName="IMIPreNumber" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CategoryVASService">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_CategoryVASService">
+              <MappingFragment StoreEntitySet="tbl_CategoryVASService">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_HeadNumber">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_HeadNumber">
+              <MappingFragment StoreEntitySet="tbl_HeadNumber">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_AggregatorID" ColumnName="FK_AggregatorID" />
+                <ScalarProperty Name="theNumber" ColumnName="theNumber" />
+                <ScalarProperty Name="IsParisType" ColumnName="IsParisType" />
+                <ScalarProperty Name="PardisServiceTariff" ColumnName="PardisServiceTariff" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_NewsContent">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_NewsContent">
+              <MappingFragment StoreEntitySet="tbl_NewsContent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_OwnerUserID" ColumnName="FK_OwnerUserID" />
+                <ScalarProperty Name="theText" ColumnName="theText" />
+                <ScalarProperty Name="SendDate" ColumnName="SendDate" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_ReceiveLog">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_ReceiveLog">
+              <MappingFragment StoreEntitySet="tbl_ReceiveLog">
+                <ScalarProperty Name="theWholeNumber" ColumnName="theWholeNumber" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_HeadNumberID" ColumnName="FK_HeadNumberID" />
+                <ScalarProperty Name="theText" ColumnName="theText" />
+                <ScalarProperty Name="SenderMobile" ColumnName="SenderMobile" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+                <ScalarProperty Name="FK_ReceiveDateID" ColumnName="FK_ReceiveDateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SendLog">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_SendLog">
+              <MappingFragment StoreEntitySet="tbl_SendLog">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="FK_VASMembershipSubscriberID" ColumnName="FK_VASMembershipSubscriberID" />
+                <ScalarProperty Name="SendDateTime" ColumnName="SendDateTime" />
+                <ScalarProperty Name="theText" ColumnName="theText" />
+                <ScalarProperty Name="ReceiverMobile" ColumnName="ReceiverMobile" />
+                <ScalarProperty Name="ServicePrice" ColumnName="ServicePrice" />
+                <ScalarProperty Name="theStatus" ColumnName="theStatus" />
+                <ScalarProperty Name="FK_SendDateID" ColumnName="FK_SendDateID" />
+                <ScalarProperty Name="SerialOrder" ColumnName="SerialOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_UnsubscriptionTerm">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_UnsubscriptionTerm">
+              <MappingFragment StoreEntitySet="tbl_UnsubscriptionTerm">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="theTerm" ColumnName="theTerm" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASService">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASService">
+              <MappingFragment StoreEntitySet="tbl_VASService">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_OwnerUserID" ColumnName="FK_OwnerUserID" />
+                <ScalarProperty Name="FK_AggregatorID" ColumnName="FK_AggregatorID" />
+                <ScalarProperty Name="FK_HeadNumberID" ColumnName="FK_HeadNumberID" />
+                <ScalarProperty Name="FK_VASServiceCategoryID" ColumnName="FK_VASServiceCategoryID" />
+                <ScalarProperty Name="IsPardis" ColumnName="IsPardis" />
+                <ScalarProperty Name="theWholeNumber" ColumnName="theWholeNumber" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="ServiceName" ColumnName="ServiceName" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="HeaderText" ColumnName="HeaderText" />
+                <ScalarProperty Name="FooterText" ColumnName="FooterText" />
+                <ScalarProperty Name="WelcomeText" ColumnName="WelcomeText" />
+                <ScalarProperty Name="GoodbyeText" ColumnName="GoodbyeText" />
+                <ScalarProperty Name="ServicePrice" ColumnName="ServicePrice" />
+                <ScalarProperty Name="IMIEnduserTariff" ColumnName="IMIEnduserTariff" />
+                <ScalarProperty Name="AggergatorServiceID" ColumnName="AggergatorServiceID" />
+                <ScalarProperty Name="IsOnDemand" ColumnName="IsOnDemand" />
+                <ScalarProperty Name="FK_UserID" ColumnName="FK_UserID" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceMembership">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceMembership">
+              <MappingFragment StoreEntitySet="tbl_VASServiceMembership">
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="SubscriptionKey" ColumnName="SubscriptionKey" />
+                <ScalarProperty Name="UnsubscriptionKey" ColumnName="UnsubscriptionKey" />
+                <ScalarProperty Name="IsNewsContent" ColumnName="IsNewsContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceMembership_NewsContent">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceMembership_NewsContent">
+              <MappingFragment StoreEntitySet="tbl_VASServiceMembership_NewsContent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="FK_NewsContentID" ColumnName="FK_NewsContentID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceMembershipSerialContentFooter">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceMembershipSerialContentFooter">
+              <MappingFragment StoreEntitySet="tbl_VASServiceMembershipSerialContentFooter">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="theOrder" ColumnName="theOrder" />
+                <ScalarProperty Name="theText" ColumnName="theText" />
+                <ScalarProperty Name="IntervalDay" ColumnName="IntervalDay" />
+                <ScalarProperty Name="SendTime" ColumnName="SendTime" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceMembershipSerialContentHeader">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceMembershipSerialContentHeader">
+              <MappingFragment StoreEntitySet="tbl_VASServiceMembershipSerialContentHeader">
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="theName" ColumnName="theName" />
+                <ScalarProperty Name="StratFrom" ColumnName="StratFrom" />
+                <ScalarProperty Name="EndAt" ColumnName="EndAt" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceMembershipSubscriber">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceMembershipSubscriber">
+              <MappingFragment StoreEntitySet="tbl_VASServiceMembershipSubscriber">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="SubscriberMobileNo" ColumnName="SubscriberMobileNo" />
+                <ScalarProperty Name="SubscrptionDate" ColumnName="SubscrptionDate" />
+                <ScalarProperty Name="UnsubscriptionDate" ColumnName="UnsubscriptionDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceOnDemand">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceOnDemand">
+              <MappingFragment StoreEntitySet="tbl_VASServiceOnDemand">
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="theType" ColumnName="theType" />
+                <ScalarProperty Name="theKey" ColumnName="theKey" />
+                <ScalarProperty Name="IsSystematic" ColumnName="IsSystematic" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceOnDemandManualContent">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceOnDemandManualContent">
+              <MappingFragment StoreEntitySet="tbl_VASServiceOnDemandManualContent">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="ValidFrom" ColumnName="ValidFrom" />
+                <ScalarProperty Name="ValidTo" ColumnName="ValidTo" />
+                <ScalarProperty Name="theText" ColumnName="theText" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="STime" ColumnName="STime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_VASServiceOnDemandSystematic">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_VASServiceOnDemandSystematic">
+              <MappingFragment StoreEntitySet="tbl_VASServiceOnDemandSystematic">
+                <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
+                <ScalarProperty Name="WebServicePath" ColumnName="WebServicePath" />
+                <ScalarProperty Name="WebServiceMethod" ColumnName="WebServiceMethod" />
+                <ScalarProperty Name="WebMethodUsername" ColumnName="WebMethodUsername" />
+                <ScalarProperty Name="WebMethodPassword" ColumnName="WebMethodPassword" />
+                <ScalarProperty Name="WebMethodOtherParameter" ColumnName="WebMethodOtherParameter" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_SystemSetting">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_SystemSetting">
+              <MappingFragment StoreEntitySet="tbl_SystemSetting">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="GatewayNumber" ColumnName="GatewayNumber" />
+                <ScalarProperty Name="GatewayCompany" ColumnName="GatewayCompany" />
+                <ScalarProperty Name="GatewayUsername" ColumnName="GatewayUsername" />
+                <ScalarProperty Name="GatewayPassword" ColumnName="GatewayPassword" />
+                <ScalarProperty Name="GatewayIP" ColumnName="GatewayIP" />
+                <ScalarProperty Name="EmailUsername" ColumnName="EmailUsername" />
+                <ScalarProperty Name="EmailHost" ColumnName="EmailHost" />
+                <ScalarProperty Name="EmailPassword" ColumnName="EmailPassword" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TelephoneNumber" ColumnName="TelephoneNumber" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="tryTime" ColumnName="tryTime" />
+                <ScalarProperty Name="tryIntervalHour" ColumnName="tryIntervalHour" />
+                <ScalarProperty Name="ETime" ColumnName="ETime" />
+                <ScalarProperty Name="FK_EUserID" ColumnName="FK_EUserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="spr_Aggregators_Delete" FunctionName="dbVASModel.Store.spr_Aggregators_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_Aggregators_Insert" FunctionName="dbVASModel.Store.spr_Aggregators_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_Aggregators_Update" FunctionName="dbVASModel.Store.spr_Aggregators_Update" />
+          <FunctionImportMapping FunctionImportName="spr_CategoryVASService_Delete" FunctionName="dbVASModel.Store.spr_CategoryVASService_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_CategoryVASService_Insert" FunctionName="dbVASModel.Store.spr_CategoryVASService_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_CategoryVASService_Update" FunctionName="dbVASModel.Store.spr_CategoryVASService_Update" />
+          <FunctionImportMapping FunctionImportName="spr_HeadNumber_Delete" FunctionName="dbVASModel.Store.spr_HeadNumber_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_HeadNumber_Insert" FunctionName="dbVASModel.Store.spr_HeadNumber_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_HeadNumber_Update" FunctionName="dbVASModel.Store.spr_HeadNumber_Update" />
+          <FunctionImportMapping FunctionImportName="spr_NewsContent_Delete" FunctionName="dbVASModel.Store.spr_NewsContent_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_NewsContent_Insert" FunctionName="dbVASModel.Store.spr_NewsContent_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_NewsContent_Update" FunctionName="dbVASModel.Store.spr_NewsContent_Update" />
+          <FunctionImportMapping FunctionImportName="spr_UnsubscriptionTerm_Delete" FunctionName="dbVASModel.Store.spr_UnsubscriptionTerm_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_UnsubscriptionTerm_Insert" FunctionName="dbVASModel.Store.spr_UnsubscriptionTerm_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_UnsubscriptionTerm_Update" FunctionName="dbVASModel.Store.spr_UnsubscriptionTerm_Update" />
+          <FunctionImportMapping FunctionImportName="spr_VASService_Delete" FunctionName="dbVASModel.Store.spr_VASService_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_VASService_Insert" FunctionName="dbVASModel.Store.spr_VASService_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASService_Update" FunctionName="dbVASModel.Store.spr_VASService_Update" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembership_Insert" FunctionName="dbVASModel.Store.spr_VASServiceMembership_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembership_NewsContent_Delete" FunctionName="dbVASModel.Store.spr_VASServiceMembership_NewsContent_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembership_NewsContent_Insert" FunctionName="dbVASModel.Store.spr_VASServiceMembership_NewsContent_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembership_Update" FunctionName="dbVASModel.Store.spr_VASServiceMembership_Update" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembershipSerialContentFooter_Delete" FunctionName="dbVASModel.Store.spr_VASServiceMembershipSerialContentFooter_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembershipSerialContentFooter_Insert" FunctionName="dbVASModel.Store.spr_VASServiceMembershipSerialContentFooter_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembershipSerialContentFooter_Update" FunctionName="dbVASModel.Store.spr_VASServiceMembershipSerialContentFooter_Update" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembershipSerialContentHeader_Delete" FunctionName="dbVASModel.Store.spr_VASServiceMembershipSerialContentHeader_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembershipSerialContentHeader_Insert" FunctionName="dbVASModel.Store.spr_VASServiceMembershipSerialContentHeader_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceMembershipSerialContentHeader_Update" FunctionName="dbVASModel.Store.spr_VASServiceMembershipSerialContentHeader_Update" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceOnDemand_Insert" FunctionName="dbVASModel.Store.spr_VASServiceOnDemand_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceOnDemand_Update" FunctionName="dbVASModel.Store.spr_VASServiceOnDemand_Update" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceOnDemandManualContent_Delete" FunctionName="dbVASModel.Store.spr_VASServiceOnDemandManualContent_Delete" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceOnDemandManualContent_Insert" FunctionName="dbVASModel.Store.spr_VASServiceOnDemandManualContent_Insert" />
+          <FunctionImportMapping FunctionImportName="spr_VASServiceOnDemandManualContent_Update" FunctionName="dbVASModel.Store.spr_VASServiceOnDemandManualContent_Update" />
+          <FunctionImportMapping FunctionImportName="tbl_VASServiceOnDemandSystematic_Insert" FunctionName="dbVASModel.Store.tbl_VASServiceOnDemandSystematic_Insert" />
+          <FunctionImportMapping FunctionImportName="tbl_VASServiceOnDemandSystematic_Update" FunctionName="dbVASModel.Store.tbl_VASServiceOnDemandSystematic_Update" />
+          <FunctionImportMapping FunctionImportName="spr_User_Profile_Update" FunctionName="dbVASModel.Store.spr_User_Profile_Update" />
+          <EntitySetMapping Name="tbl_CRMCategory">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_CRMCategory">
+              <MappingFragment StoreEntitySet="tbl_CRMCategory">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_CRM">
+            <EntityTypeMapping TypeName="dbVASModel.tbl_CRM">
+              <MappingFragment StoreEntitySet="tbl_CRM">
+                <ScalarProperty Name="ResponseRemarks" ColumnName="ResponseRemarks" />
+                <ScalarProperty Name="ResponseDate" ColumnName="ResponseDate" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="RequestNo" ColumnName="RequestNo" />
+                <ScalarProperty Name="AttachmentMime" ColumnName="AttachmentMime" />
+                <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="FK_CRMCategoryID" ColumnName="FK_CRMCategoryID" />
+                <ScalarProperty Name="FK_OwnerUserID" ColumnName="FK_OwnerUserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

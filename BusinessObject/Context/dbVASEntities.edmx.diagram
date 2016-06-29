@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="389d203ed0f84ab883a686a6d944bb91" Name="Diagram1">
+        <EntityTypeShape EntityType="dbVASModel.tbl_Accessgroup" Width="1.5" PointX="0.75" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_AccessgroupMenu" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_AccessgroupUser" Width="1.5" PointX="3" PointY="11.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_Menu" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_User" Width="1.5" PointX="0.75" PointY="11.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.sysdiagram" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_Date" Width="1.5" PointX="10.5" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_Aggregators" Width="1.5" PointX="3.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_CategoryVASService" Width="1.5" PointX="3.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_HeadNumber" Width="1.5" PointX="3.75" PointY="19.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_NewsContent" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_ReceiveLog" Width="1.5" PointX="15.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_SendLog" Width="1.5" PointX="12.75" PointY="12.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_UnsubscriptionTerm" Width="1.5" PointX="7.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASService" Width="1.5" PointX="6" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceMembership" Width="1.5" PointX="8.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceMembership_NewsContent" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceMembershipSerialContentFooter" Width="1.5" PointX="12.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceMembershipSerialContentHeader" Width="1.5" PointX="10.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceMembershipSubscriber" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceOnDemand" Width="1.5" PointX="8.25" PointY="17" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceOnDemandManualContent" Width="1.5" PointX="10.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_VASServiceOnDemandSystematic" Width="1.5" PointX="10.5" PointY="18.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_SystemSetting" Width="1.5" PointX="12.75" PointY="1.25" IsExpanded="true" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_AccessgroupMenu_tbl_Accessgroup" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_AccessgroupUser_tbl_Accessgroup" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_AccessgroupUser_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_NewsContents_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServices_tbl_User" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_ReceiveLog_tbl_Date" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_SendLog_tbl_Date" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_HeadNumbers_tbl_Aggregators" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServices_tbl_Aggregators" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServices_tbl_VASServiceCategories" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_ReceiveLog_tbl_HeadNumber" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServices_tbl_HeadNumbers" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_NewsContent_MembershipVASService_tbl_NewsContents" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_SendLog_tbl_VASService" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_MembershipVASService_tbl_VASServices" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServiceOnDemand_tbl_VASService" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_SerialContent_Header_tbl_MembershipVASService" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_NewsContent_MembershipVASService_tbl_MembershipVASService" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServiceMembershipSubscriber_tbl_VASServiceMembership" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServiceMembershipSerialContentFooter_tbl_VASServiceMembershipSerialContentHeader" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServiceOnDemandManual_tbl_VASServiceOnDemand" ManuallyRouted="false" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_VASServiceOnDemandSystematic_tbl_VASServiceOnDemand" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_CRMCategory" Width="1.5" PointX="3.75" PointY="23" />
+        <EntityTypeShape EntityType="dbVASModel.tbl_CRM" Width="1.5" PointX="6" PointY="18.875" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_CRM_tbl_User" />
+        <AssociationConnector Association="dbVASModel.FK_tbl_CRM_tbl_CRMCategory" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
