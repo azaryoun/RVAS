@@ -24,6 +24,7 @@ namespace BusinessObject.Context
         public Nullable<byte> theStatus { get; set; }
         public Nullable<int> FK_SendDateID { get; set; }
         public Nullable<int> SerialOrder { get; set; }
+        public Nullable<int> FK_ID { get; set; }
     
         public virtual tbl_Date tbl_Date { get; set; }
         public virtual tbl_VASService tbl_VASService { get; set; }

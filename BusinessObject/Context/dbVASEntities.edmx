@@ -104,6 +104,11 @@ warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a
           <Property Name="version" Type="int" />
           <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'dbVAS.dbo.Table_1' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Table_1">
+          <Property Name="TF" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
         <EntityType Name="tbl_CRMCategory">
           <Key>
             <PropertyRef Name="ID" />
@@ -162,7 +167,7 @@ warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a
           <Property Name="ContactNo" Type="nvarchar" MaxLength="50" />
           <Property Name="Attachment" Type="image" />
           <Property Name="AttachmentMime" Type="nvarchar" MaxLength="50" />
-          <Property Name="RequestNo" Type="nvarchar" MaxLength="50" />
+          <Property Name="RequestNo" Type="char" MaxLength="10" />
           <Property Name="RequestDate" Type="datetime" />
           <Property Name="Status" Type="tinyint" />
           <Property Name="ResponseDate" Type="datetime" />
@@ -214,6 +219,7 @@ warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a
           <Property Name="ServicePrice" Type="money" />
           <Property Name="theStatus" Type="tinyint" />
           <Property Name="FK_SendDateID" Type="int" />
+          <Property Name="FK_ID" Type="int" />
           <Property Name="SerialOrder" Type="int" />
         </EntityType>
         <EntityType Name="tbl_UnsubscriptionTerm">
@@ -1199,6 +1205,7 @@ warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a
           <NavigationProperty Name="tbl_Date" Relationship="Self.FK_tbl_SendLog_tbl_Date" FromRole="tbl_SendLog" ToRole="tbl_Date" />
           <NavigationProperty Name="tbl_VASService" Relationship="Self.FK_tbl_SendLog_tbl_VASService" FromRole="tbl_SendLog" ToRole="tbl_VASService" />
           <NavigationProperty Name="tbl_VASServiceMembershipSubscriber" Relationship="Self.FK_tbl_SendLog_tbl_VASServiceMembershipSubscriber" FromRole="tbl_SendLog" ToRole="tbl_VASServiceMembershipSubscriber" />
+          <Property Name="FK_ID" Type="Int32" />
         </EntityType>
         <EntityType Name="tbl_UnsubscriptionTerm">
           <Key>
@@ -2009,7 +2016,7 @@ warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a
           <Property Name="ContactNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Attachment" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="AttachmentMime" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="RequestNo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RequestNo" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
           <Property Name="RequestDate" Type="DateTime" Precision="3" />
           <Property Name="Status" Type="Byte" />
           <Property Name="ResponseDate" Type="DateTime" Precision="3" />
@@ -2211,6 +2218,7 @@ warning 6002: The table/view 'dbVAS.BasicInfo.tbl_SystemSetting' does not have a
           <EntitySetMapping Name="tbl_SendLog">
             <EntityTypeMapping TypeName="dbVASModel.tbl_SendLog">
               <MappingFragment StoreEntitySet="tbl_SendLog">
+                <ScalarProperty Name="FK_ID" ColumnName="FK_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FK_VASServiceID" ColumnName="FK_VASServiceID" />
                 <ScalarProperty Name="FK_VASMembershipSubscriberID" ColumnName="FK_VASMembershipSubscriberID" />
