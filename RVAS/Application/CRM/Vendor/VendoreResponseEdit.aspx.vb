@@ -9,8 +9,7 @@ Public Class VendoreResponseEdit
         Bootstrap_Panel.Enable_Save_Client_Validate = True
         Bootstrap_Panel.ClearMessage()
 
-
-
+        'ggsahs
         If Page.IsPostBack = False Then
 
 
