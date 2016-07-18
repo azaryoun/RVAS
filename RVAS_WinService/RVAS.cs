@@ -72,7 +72,7 @@ namespace RVAS_WinService
 
                     if (lstVASServiceMembership_NewsContent.Count == 0)
                     {
-                        System.Threading.Thread.Sleep(1000);
+                        System.Threading.Thread.Sleep(10000);
                         continue;
                     }
 
@@ -89,8 +89,16 @@ namespace RVAS_WinService
 
                             try
                             {
-                                //Call Send Service Here
 
+                                var strTo = itemVASServiceMembershipSubscriber.SubscriberMobileNo; // "989122764983";
+                                var strFrom = itemVASServiceMembership_NewsContent.tbl_VASServiceMembership.tbl_VASService.theWholeNumber;
+                                var strServiceId = itemVASServiceMembership_NewsContent.tbl_VASServiceMembership.tbl_VASService.AggergatorServiceID; //"09118a098cbd4013bb6775c607869034";
+
+
+                                var strMessage = itemVASServiceMembership_NewsContent.tbl_VASServiceMembership.tbl_VASService.HeaderText + "/n/r" + itemVASServiceMembership_NewsContent.tbl_NewsContent.theText + "/n/r" + itemVASServiceMembership_NewsContent.tbl_VASServiceMembership.tbl_VASService.FooterText;
+
+                                RunAsync(strTo, strFrom, strServiceId, strMessage).Wait();
+                              
                                 rowSendLog.FK_ID = itemVASServiceMembership_NewsContent.FK_NewsContentID;
                                 rowSendLog.FK_SendDateID = intSendDateID;
                                 rowSendLog.FK_VASMembershipSubscriberID = itemVASServiceMembershipSubscriber.ID;
@@ -100,7 +108,7 @@ namespace RVAS_WinService
                                 rowSendLog.SerialOrder = null;
                                 rowSendLog.ServicePrice = itemVASServiceMembership_NewsContent.tbl_VASServiceMembership.tbl_VASService.ServicePrice;
                                 rowSendLog.theStatus = 1; //Success
-                                rowSendLog.theText = itemVASServiceMembership_NewsContent.tbl_NewsContent.theText;
+                                rowSendLog.theText = strMessage;
                             }
                             catch
                             {
@@ -158,7 +166,7 @@ namespace RVAS_WinService
 
                     if (lstVASServiceMembershipSerialContentHeader.Count == 0)
                     {
-                        System.Threading.Thread.Sleep(5000);
+                        System.Threading.Thread.Sleep(10000);
                         continue;
                     }
 
@@ -182,7 +190,13 @@ namespace RVAS_WinService
 
                                     try
                                     {
-                                        //Call Send Service Here
+                                        var strTo = itemVASServiceMembershipSubscriber.SubscriberMobileNo; // "989122764983";
+                                        var strFrom = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.theWholeNumber;
+                                        var strServiceId = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.AggergatorServiceID; //"09118a098cbd4013bb6775c607869034";
+                                        var strMessage = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.HeaderText + "\n\r" + lnqVASServiceMembershipSerialContentFooter.theText + "\n\r" + itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.FooterText;
+
+                                        RunAsync(strTo, strFrom, strServiceId, strMessage).Wait();
+
 
                                         rowSendLog.FK_ID = lnqVASServiceMembershipSerialContentFooter.ID;
                                         rowSendLog.FK_SendDateID = intSendDateID;
@@ -193,7 +207,7 @@ namespace RVAS_WinService
                                         rowSendLog.SerialOrder = 1;
                                         rowSendLog.ServicePrice = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.ServicePrice;
                                         rowSendLog.theStatus = 1; //Success
-                                        rowSendLog.theText = lnqVASServiceMembershipSerialContentFooter.theText;
+                                        rowSendLog.theText = strMessage;
                                     }
                                     catch
                                     {
@@ -235,7 +249,16 @@ namespace RVAS_WinService
 
                                     try
                                     {
-                                        //Call Send Service Here
+
+
+                                        var strTo = itemVASServiceMembershipSubscriber.SubscriberMobileNo; // "989122764983";
+                                        var strFrom = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.theWholeNumber;
+                                        var strServiceId = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.AggergatorServiceID ; //"09118a098cbd4013bb6775c607869034";
+                                        var strMessage = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.HeaderText  + "\n\r" +  lnqVASServiceMembershipSerialContentFooter.theText + "\n\r" + itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.FooterText;
+
+                                        RunAsync(strTo, strFrom, strServiceId, strMessage).Wait();
+
+
 
                                         rowSendLog.FK_ID = lnqVASServiceMembershipSerialContentFooter.ID;
                                         rowSendLog.FK_SendDateID = intSendDateID;
@@ -246,7 +269,7 @@ namespace RVAS_WinService
                                         rowSendLog.SerialOrder = intCurrentSerialOrder;
                                         rowSendLog.ServicePrice = itemVASServiceMembershipSerialContentHeader.tbl_VASServiceMembership.tbl_VASService.ServicePrice;
                                         rowSendLog.theStatus = 1; //Success
-                                        rowSendLog.theText = lnqVASServiceMembershipSerialContentFooter.theText;
+                                        rowSendLog.theText = strMessage;
                                     }
                                     catch
                                     {
@@ -297,7 +320,7 @@ namespace RVAS_WinService
 
 
 
-        static async Task RunAsync()
+        static async Task RunAsync(string to,string from,string serviceId,string message)
         {
             using (var client = new HttpClient())
             {
@@ -305,13 +328,12 @@ namespace RVAS_WinService
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-                var strTo = "989122764983";
-                var strFrom = "9830834911";
-                var strServiceID = "09118a098cbd4013bb6775c607869034";
-                var strMessage = "The Message";
+                var strTo = to; //"989122764983";
+                var strFrom = from; // "9830834911";
+                var strServiceID = serviceId; //"09118a098cbd4013bb6775c607869034";
+                var strMessage = message; //"The Message";
 
-             //   var oSMS = new {sc= TARANOM_REST_COMPANY, to= strTo, from= strFrom, serviceId= strServiceID, username=TARANOM_REST_USERNAME, password= TARANOM_REST_PASSWORD, message =  strMessage};
-               
+                
                 HttpResponseMessage response = null;
                 var strURL = string.Format("{0}?sc={1}&to={2}&from={3}&serviceId={4}&username={5}&password={6}&message={7}", TARANOM_REST_SEND_SERVICE, TARANOM_REST_COMPANY, strTo, strFrom,strServiceID, TARANOM_REST_USERNAME, TARANOM_REST_PASSWORD,strMessage);
 
