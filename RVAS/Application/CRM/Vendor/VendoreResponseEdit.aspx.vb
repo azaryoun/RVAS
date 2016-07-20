@@ -35,7 +35,7 @@ Public Class VendoreResponseEdit
             Dim OdbVas As New BusinessObject.Context.dbVASEntities
 
 
-            Dim lnqCRM = OdbVas.tbl_CRM.Where(Function(x) x.FK_OwnerUserID = osctUserInfo.ID).FirstOrDefault
+            Dim lnqCRM = OdbVas.tbl_CRM.Where(Function(x) x.ID = inttheKey).FirstOrDefault
 
             If lnqCRM Is Nothing Then
                 Response.Redirect(ViewState("BackPage"))
