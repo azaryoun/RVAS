@@ -1,4 +1,4 @@
-﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="VASReceiver.aspx.vb" Inherits="RVAS.VASReceiver" %>
+﻿<%@ Page Language="vb" AutoEventWireup="false" CodeBehind="Delivery.aspx.vb" Inherits="RVAS.Delivery" %>
 
 <!DOCTYPE html>
 

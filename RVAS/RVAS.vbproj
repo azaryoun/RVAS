@@ -270,6 +270,8 @@
     <Content Include="CSR\PCalendar\calendar.js" />
     <Content Include="CSR\PCalendar\jquery.Bootstrap-PersianDateTimePicker.css" />
     <Content Include="CSR\PCalendar\jquery.Bootstrap-PersianDateTimePicker.js" />
+    <Content Include="Pardis\Delivery.aspx" />
+    <Content Include="Pardis\Notification.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -1102,7 +1104,8 @@
     <Content Include="UserControls\Bootstrap\Bootstrap_Panel.ascx" />
     <Content Include="UserControls\Bootstrap\Bootstrap_PersianDateTimePicker.ascx" />
     <Content Include="UserControls\Bootstrap\UC_TimePicker.ascx" />
-    <Content Include="VASReceiver.aspx" />
+    <Content Include="Pardis\MO.aspx" />
+    <Content Include="VASReceiver_Taranom.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1675,6 +1678,20 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.vb" />
     <Compile Include="App_Start\RouteConfig.vb" />
+    <Compile Include="Pardis\Delivery.aspx.designer.vb">
+      <DependentUpon>Delivery.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pardis\Delivery.aspx.vb">
+      <DependentUpon>Delivery.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="Pardis\Notification.aspx.designer.vb">
+      <DependentUpon>Notification.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pardis\Notification.aspx.vb">
+      <DependentUpon>Notification.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="UserControls\Bootstrap\Bootstrap_Menu.ascx.designer.vb">
       <DependentUpon>Bootstrap_Menu.ascx</DependentUpon>
     </Compile>
@@ -1749,11 +1766,18 @@
       <DependentUpon>UC_TimePicker.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="VASReceiver.aspx.designer.vb">
-      <DependentUpon>VASReceiver.aspx</DependentUpon>
+    <Compile Include="Pardis\MO.aspx.designer.vb">
+      <DependentUpon>MO.aspx</DependentUpon>
     </Compile>
-    <Compile Include="VASReceiver.aspx.vb">
-      <DependentUpon>VASReceiver.aspx</DependentUpon>
+    <Compile Include="Pardis\MO.aspx.vb">
+      <DependentUpon>MO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
+    <Compile Include="VASReceiver_Taranom.aspx.designer.vb">
+      <DependentUpon>VASReceiver_Taranom.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="VASReceiver_Taranom.aspx.vb">
+      <DependentUpon>VASReceiver_Taranom.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
   </ItemGroup>

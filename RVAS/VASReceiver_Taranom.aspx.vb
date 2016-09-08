@@ -1,7 +1,7 @@
 ﻿Imports System.Net.Http
 Imports System.Net.Http.Headers
 Imports System.Threading.Tasks
-Public Class VASReceiver
+Public Class VASReceiver_Taranom
     Inherits System.Web.UI.Page
 
     Private Const AGGREGATOR_COMPANY As String = "Taranom"
@@ -66,6 +66,16 @@ Public Class VASReceiver
 
         If CheckSubscription(ctxVar, strMessage, strFrom, strSeviceID, strTo) = True Then Return
 
+        Dim dteToday As Date = Date.Now.Date
+
+        Dim spnFromTime As TimeSpan = DateTime.Now.AddHours(-2).TimeOfDay
+        Dim spnToTime As TimeSpan = DateTime.Now.TimeOfDay
+
+        Dim intSendDateID As Integer = ctxVar.tbl_Date.Where(Function(x) x.DateG = dteToday).FirstOrDefault().ID
+
+
+
+
 
         Dim lstVASServiceOnDemand = ctxVar.tbl_VASServiceOnDemand.Where(Function(x) x.tbl_VASService.IsActive = True AndAlso x.tbl_VASService.theWholeNumber = strTo AndAlso x.tbl_VASService.AggergatorServiceID = strSeviceID).ToList()
 
@@ -75,21 +85,123 @@ Public Class VASReceiver
             If itmVASServiceOnDemand.theType = 1 Then 'Fixed Key
                 If itmVASServiceOnDemand.theKey.ToLower <> strMessage.ToLower Then Continue For
                 Dim strOutputMessage As String = ""
+
                 If GetMessageForService(itmVASServiceOnDemand.FK_VASServiceID, strMessage, strOutputMessage) = False Then Continue For
-                Call SendVASMessage(itmVASServiceOnDemand.tbl_VASService.theWholeNumber, strFrom, itmVASServiceOnDemand.tbl_VASService.AggergatorServiceID, strOutputMessage)
+                Dim rowSendLog As BusinessObject.Context.tbl_SendLog = New BusinessObject.Context.tbl_SendLog()
+
+                Try
+
+                    Call SendVASMessage(itmVASServiceOnDemand.tbl_VASService.theWholeNumber, strFrom, itmVASServiceOnDemand.tbl_VASService.AggergatorServiceID, strOutputMessage)
+
+                    rowSendLog.FK_ID = Nothing
+                    rowSendLog.FK_SendDateID = intSendDateID
+                    rowSendLog.FK_VASMembershipSubscriberID = Nothing
+                    rowSendLog.FK_VASServiceID = itmVASServiceOnDemand.FK_VASServiceID
+                    rowSendLog.ReceiverMobile = strFrom
+                    rowSendLog.SendDateTime = Date.Now
+                    rowSendLog.SerialOrder = Nothing
+                    rowSendLog.ServicePrice = itmVASServiceOnDemand.tbl_VASService.ServicePrice
+                    rowSendLog.theStatus = 1 'Success
+                    rowSendLog.theText = strMessage
+
+
+
+                Catch ex As Exception
+
+                    rowSendLog.FK_ID = Nothing
+                    rowSendLog.FK_SendDateID = intSendDateID
+                    rowSendLog.FK_VASMembershipSubscriberID = Nothing
+                    rowSendLog.FK_VASServiceID = itmVASServiceOnDemand.FK_VASServiceID
+                    rowSendLog.ReceiverMobile = strFrom
+                    rowSendLog.SendDateTime = Date.Now
+                    rowSendLog.SerialOrder = Nothing
+                    rowSendLog.ServicePrice = itmVASServiceOnDemand.tbl_VASService.ServicePrice
+                    rowSendLog.theStatus = 0 'Failed
+                    rowSendLog.theText = strMessage
+
+                End Try
+
+
+
                 Exit For
             ElseIf itmVASServiceOnDemand.theType = 2 Then 'StartsWith
 
                 If strMessage.ToLower.StartsWith(itmVASServiceOnDemand.theKey.ToLower) = True Then Continue For
                 Dim strOutputMessage As String = ""
+
                 If GetMessageForService(itmVASServiceOnDemand.FK_VASServiceID, strMessage, strOutputMessage) = False Then Continue For
-                Call SendVASMessage(itmVASServiceOnDemand.tbl_VASService.theWholeNumber, strFrom, itmVASServiceOnDemand.tbl_VASService.AggergatorServiceID, strOutputMessage)
+
+                Dim rowSendLog As BusinessObject.Context.tbl_SendLog = New BusinessObject.Context.tbl_SendLog()
+
+                Try
+                    Call SendVASMessage(itmVASServiceOnDemand.tbl_VASService.theWholeNumber, strFrom, itmVASServiceOnDemand.tbl_VASService.AggergatorServiceID, strOutputMessage)
+
+                    rowSendLog.FK_ID = Nothing
+                    rowSendLog.FK_SendDateID = intSendDateID
+                    rowSendLog.FK_VASMembershipSubscriberID = Nothing
+                    rowSendLog.FK_VASServiceID = itmVASServiceOnDemand.FK_VASServiceID
+                    rowSendLog.ReceiverMobile = strFrom
+                    rowSendLog.SendDateTime = Date.Now
+                    rowSendLog.SerialOrder = Nothing
+                    rowSendLog.ServicePrice = itmVASServiceOnDemand.tbl_VASService.ServicePrice
+                    rowSendLog.theStatus = 1 'Success
+                    rowSendLog.theText = strMessage
+
+
+                Catch ex As Exception
+
+
+                    rowSendLog.FK_ID = Nothing
+                    rowSendLog.FK_SendDateID = intSendDateID
+                    rowSendLog.FK_VASMembershipSubscriberID = Nothing
+                    rowSendLog.FK_VASServiceID = itmVASServiceOnDemand.FK_VASServiceID
+                    rowSendLog.ReceiverMobile = strFrom
+                    rowSendLog.SendDateTime = Date.Now
+                    rowSendLog.SerialOrder = Nothing
+                    rowSendLog.ServicePrice = itmVASServiceOnDemand.tbl_VASService.ServicePrice
+                    rowSendLog.theStatus = 0 'Failed
+                    rowSendLog.theText = strMessage
+                End Try
+
+
                 Exit For
             ElseIf itmVASServiceOnDemand.theType = 3 Then 'Dynamic
 
                 Dim strOutputMessage As String = ""
                 If GetMessageForService(itmVASServiceOnDemand.FK_VASServiceID, strMessage, strOutputMessage) = False Then Continue For
-                Call SendVASMessage(itmVASServiceOnDemand.tbl_VASService.theWholeNumber, strFrom, itmVASServiceOnDemand.tbl_VASService.AggergatorServiceID, strOutputMessage)
+
+                Dim rowSendLog As BusinessObject.Context.tbl_SendLog = New BusinessObject.Context.tbl_SendLog()
+
+                Try
+                    Call SendVASMessage(itmVASServiceOnDemand.tbl_VASService.theWholeNumber, strFrom, itmVASServiceOnDemand.tbl_VASService.AggergatorServiceID, strOutputMessage)
+
+                    rowSendLog.FK_ID = Nothing
+                    rowSendLog.FK_SendDateID = intSendDateID
+                    rowSendLog.FK_VASMembershipSubscriberID = Nothing
+                    rowSendLog.FK_VASServiceID = itmVASServiceOnDemand.FK_VASServiceID
+                    rowSendLog.ReceiverMobile = strFrom
+                    rowSendLog.SendDateTime = Date.Now
+                    rowSendLog.SerialOrder = Nothing
+                    rowSendLog.ServicePrice = itmVASServiceOnDemand.tbl_VASService.ServicePrice
+                    rowSendLog.theStatus = 1 'Success
+                    rowSendLog.theText = strMessage
+
+                Catch ex As Exception
+
+                    rowSendLog.FK_ID = Nothing
+                    rowSendLog.FK_SendDateID = intSendDateID
+                    rowSendLog.FK_VASMembershipSubscriberID = Nothing
+                    rowSendLog.FK_VASServiceID = itmVASServiceOnDemand.FK_VASServiceID
+                    rowSendLog.ReceiverMobile = strFrom
+                    rowSendLog.SendDateTime = Date.Now
+                    rowSendLog.SerialOrder = Nothing
+                    rowSendLog.ServicePrice = itmVASServiceOnDemand.tbl_VASService.ServicePrice
+                    rowSendLog.theStatus = 0 'Failed
+                    rowSendLog.theText = strMessage
+
+                End Try
+
+
                 Exit For
 
             End If
