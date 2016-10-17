@@ -14,7 +14,7 @@
          
             if (cmbVASServices.selectedIndex==0) {
                 alert("سرویس مرتبط انتخاب نشده است");
-                cmbVASServices.focus();
+                cmbVASServices.focus();  
                 return false;
             }
           

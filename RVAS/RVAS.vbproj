@@ -266,11 +266,19 @@
     <Content Include="Application\Services\OnDemand\Systematic\VASServiceOnDemandSystematicManagement.aspx" />
     <Content Include="Application\StartPage.aspx" />
     <Content Include="Application\WebForm1.aspx" />
+    <Content Include="bin\BusinessObject.dll" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.Extended.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\RVAS.dll" />
+    <Content Include="bin\RVAS.pdb" />
+    <Content Include="bin\Service.dll" />
     <Content Include="CSR\PCalendar\bootstrap.min_cal.js" />
     <Content Include="CSR\PCalendar\calendar.js" />
     <Content Include="CSR\PCalendar\jquery.Bootstrap-PersianDateTimePicker.css" />
     <Content Include="CSR\PCalendar\jquery.Bootstrap-PersianDateTimePicker.js" />
     <Content Include="Pardis\Delivery.aspx" />
+    <Content Include="Pardis\MO.aspx" />
     <Content Include="Pardis\Notification.aspx" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -1104,7 +1112,6 @@
     <Content Include="UserControls\Bootstrap\Bootstrap_Panel.ascx" />
     <Content Include="UserControls\Bootstrap\Bootstrap_PersianDateTimePicker.ascx" />
     <Content Include="UserControls\Bootstrap\UC_TimePicker.ascx" />
-    <Content Include="Pardis\MO.aspx" />
     <Content Include="VASReceiver_Taranom.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -1685,6 +1692,13 @@
       <DependentUpon>Delivery.aspx</DependentUpon>
       <SubType>ASPXCodebehind</SubType>
     </Compile>
+    <Compile Include="Pardis\MO.aspx.designer.vb">
+      <DependentUpon>MO.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Pardis\MO.aspx.vb">
+      <DependentUpon>MO.aspx</DependentUpon>
+      <SubType>ASPXCodebehind</SubType>
+    </Compile>
     <Compile Include="Pardis\Notification.aspx.designer.vb">
       <DependentUpon>Notification.aspx</DependentUpon>
     </Compile>
@@ -1765,13 +1779,6 @@
     <Compile Include="UserControls\Bootstrap\UC_TimePicker.ascx.vb">
       <DependentUpon>UC_TimePicker.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Pardis\MO.aspx.designer.vb">
-      <DependentUpon>MO.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Pardis\MO.aspx.vb">
-      <DependentUpon>MO.aspx</DependentUpon>
-      <SubType>ASPXCodebehind</SubType>
     </Compile>
     <Compile Include="VASReceiver_Taranom.aspx.designer.vb">
       <DependentUpon>VASReceiver_Taranom.aspx</DependentUpon>

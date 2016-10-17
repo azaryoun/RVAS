@@ -273,35 +273,35 @@ Public Class MO
     End Function
 
     Private Sub SendVASMessage(serviceNumber As String, subscriberMobile As String, aggregatorServiceId As String, outputMessage As String)
-        RunAsync(subscriberMobile, serviceNumber, aggregatorServiceId, outputMessage).Wait()
+        'RunAsync(subscriberMobile, serviceNumber, aggregatorServiceId, outputMessage).Wait()
     End Sub
 
 
 
-    Private Shared Async Function RunAsync(subscriberMobile As String, serviceNumber As String, aggregatorServiceId As String, outputMessage As String) As Task
+    'Private Shared Async Function RunAsync(subscriberMobile As String, serviceNumber As String, aggregatorServiceId As String, outputMessage As String) As Task
 
-        Using client As New HttpClient()
+    '    Using client As New HttpClient()
 
 
-            client.BaseAddress = New Uri(PARDIS_REST_BASE_IP_ADDRESS)
-            client.DefaultRequestHeaders.Accept.Clear()
-            client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
+    '        client.BaseAddress = New Uri(PARDIS_REST_BASE_IP_ADDRESS)
+    '        client.DefaultRequestHeaders.Accept.Clear()
+    '        client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
 
-            Dim strTo As String = subscriberMobile '"989122764983";
-            Dim strFrom As String = serviceNumber  '"9830834911";
-            Dim strServiceID As String = aggregatorServiceId  '"09118a098cbd4013bb6775c607869034";
-            Dim strMessage As String = outputMessage ' "The Message";
+    '        Dim strTo As String = subscriberMobile '"989122764983";
+    '        Dim strFrom As String = serviceNumber  '"9830834911";
+    '        Dim strServiceID As String = aggregatorServiceId  '"09118a098cbd4013bb6775c607869034";
+    '        Dim strMessage As String = outputMessage ' "The Message";
 
-            Dim Response As HttpResponseMessage = Nothing
-            Dim strURL As String = String.Format("{0}?sc={1}&to={2}&from={3}&serviceId={4}&username={5}&password={6}&message={7}", PARDIS_REST_SEND_SERVICE, PARDIS_REST_COMPANY, strTo, strFrom, strServiceID, PARDIS_REST_USERNAME, PARDIS_REST_PASSWORD, strMessage)
+    '        Dim Response As HttpResponseMessage = Nothing
+    '        Dim strURL As String = String.Format("{0}?sc={1}&to={2}&from={3}&serviceId={4}&username={5}&password={6}&message={7}", PARDIS_REST_SEND_SERVICE, PARDIS_REST_COMPANY, strTo, strFrom, strServiceID, PARDIS_REST_USERNAME, PARDIS_REST_PASSWORD, strMessage)
 
-            Response = Await client.GetAsync(strURL)
+    '        Response = Await client.GetAsync(strURL)
 
-            If Response.IsSuccessStatusCode = True Then
-                Dim strVAS As String = Await Response.Content.ReadAsStringAsync()
-            End If
+    '        If Response.IsSuccessStatusCode = True Then
+    '            Dim strVAS As String = Await Response.Content.ReadAsStringAsync()
+    '        End If
 
-        End Using
-    End Function
+    '    End Using
+    'End Function
 
 End Class
